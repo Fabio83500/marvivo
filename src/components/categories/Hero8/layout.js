@@ -13,7 +13,7 @@ export default function layout() {
           src={foot8}
           alt="Équipe Foot à 8 de l'AS Mar Vivo"
           fill
-          priority
+          preload
           className="object-cover"
         />
 
@@ -36,7 +36,7 @@ export default function layout() {
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
               Une étape essentielle dans la progression de nos jeunes
-              joueurs, entre développement technique, esprit d'équipe
+              joueurs, entre développement technique, esprit d&apos;équipe
               et découverte de la compétition.
             </p>
           </div>

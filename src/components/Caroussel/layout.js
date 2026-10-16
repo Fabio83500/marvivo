@@ -13,21 +13,22 @@ import lapiazza from "@/images/lapiazza.png";
 import macdo from "@/images/macdo.png";
 
 const logos = [
-  logomf,
-  logogarden,
-  adi,
-  abcdom,
-  funnyland,
-  immoselect,
-  intermarche,
-  intersport,
-  lapiazza,
-  macdo,
+  { src: logomf, name: "MF Agency" },
+  { src: logogarden, name: "partenaire" },
+  { src: adi, name: "ADI" },
+  { src: abcdom, name: "ABC Dom" },
+  { src: funnyland, name: "Funnyland" },
+  { src: immoselect, name: "Immo Select" },
+  { src: intermarche, name: "Intermarché" },
+  { src: intersport, name: "Intersport" },
+  { src: lapiazza, name: "La Piazza" },
+  { src: macdo, name: "McDonald's" },
 ];
 
 export default function PartnersCarousel() {
   return (
-    <section className=" overflow-hidden">
+    <section id="partenaires" className="overflow-hidden">
+      <h2 className="sr-only">Nos partenaires</h2>
       <div className="overflow-hidden py-10">
         <div className="flex w-max gap-16 animate-marquee">
           {logos.map((logo, index) => (
@@ -36,8 +37,8 @@ export default function PartnersCarousel() {
               className="flex h-24 w-60 shrink-0 items-center justify-center"
             >
               <Image
-                src={logo}
-                alt="Logo partenaire"
+                src={logo.src}
+                alt={`Logo ${logo.name}`}
                 className="max-h-full max-w-full object-contain"
               />
             </div>

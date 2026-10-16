@@ -55,7 +55,7 @@ export default function CardCate() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Retrouvez les jours et horaires d'entraînement de chaque
+              Retrouvez les jours et horaires d&apos;entraînement de chaque
               catégorie.
             </p>
           </div>

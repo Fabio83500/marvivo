@@ -14,7 +14,7 @@ export default function layout() {
           src={heroFoot5}
           alt="Jeunes joueurs de l'AS Mar Vivo"
           fill
-          priority
+          preload
           className="object-cover"
         />
 
@@ -36,7 +36,7 @@ export default function layout() {
             </p>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/90 md:text-lg">
-              Les premières années de football à l'AS Mar Vivo :
+              Les premières années de football à l&apos;AS Mar Vivo :
               apprendre, progresser et surtout prendre plaisir à jouer ensemble.
             </p>
 

@@ -1,12 +1,23 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Header from "@/components/Header/layout.js"
 import Localisation from "@/components/Localisation/layout.js"
 import Footer from "@/components/Footer/layout.js"
 export default function MentionsLegales() {
     return (
-        <main className="min-h-screen bg-slate-50">
+        <>
+            <Head>
+                <title>Mentions légales | AS Mar Vivo</title>
+                <meta
+                    name="description"
+                    content="Mentions légales du site de l'AS Mar Vivo : éditeur, hébergement, conception et propriété intellectuelle."
+                />
+            </Head>
+
             <Header />
+
+            <main className="min-h-screen bg-slate-50">
 
             <section className="relative overflow-hidden bg-primary px-6 py-32 text-white">
                 <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/5" />
@@ -241,8 +252,10 @@ export default function MentionsLegales() {
                 </div>
             </section>
             <Localisation />
-            <Footer />
 
-        </main>
+            </main>
+
+            <Footer />
+        </>
     );
 }

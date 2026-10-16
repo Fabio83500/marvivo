@@ -1,11 +1,6 @@
 import React from "react";
-import Link from "next/link";
+import Head from "next/head";
 import Image from "next/image";
-import heroFoot5 from "@/images/sept.jpg";
-import logomarvivo from "@/images/logomarvivo.svg"
-
-import u67 from "@/images/sept.jpg";
-import u89 from "@/images/treize.jpg";
 import labelFFF from "@/images/labelFFF.png";
 
 import Hero from "@/components/categories/Hero/layout.js"
@@ -18,9 +13,18 @@ import Footer from "@/components/Footer/layout.js"
 
 export default function FootA5() {
   return (
-    <main className="bg-white">
+    <>
+      <Head>
+        <title>Foot à 5 (U5-U9) | AS Mar Vivo</title>
+        <meta
+          name="description"
+          content="Découvrez la catégorie Foot à 5 de l'AS Mar Vivo (U5 à U9) : horaires d'entraînement, éducateurs et informations utiles."
+        />
+      </Head>
+
       <Header />
-     
+
+      <main className="bg-white">
 
       <Hero/>
       <Introduction />
@@ -48,9 +52,9 @@ export default function FootA5() {
             </h2>
 
             <p className="mt-4 leading-7 text-slate-600">
-              L'AS Mar Vivo est labellisée par la Fédération Française
+              L&apos;AS Mar Vivo est labellisée par la Fédération Française
               de Football depuis octobre 2012, une reconnaissance de
-              l'engagement du club dans la formation et l'accompagnement
+              l&apos;engagement du club dans la formation et l&apos;accompagnement
               de ses jeunes licenciés.
             </p>
           </div>
@@ -58,9 +62,11 @@ export default function FootA5() {
         </div>
       </section>
       <InfoUtile />
-    <Localisation />
-    <Footer />
+      <Localisation />
 
-    </main>
+      </main>
+
+      <Footer />
+    </>
   );
 }

@@ -17,8 +17,8 @@ export default function CardCate({ equipes }) {
             </h2>
 
             <p className="mt-5 text-lg leading-7 text-slate-600">
-              Chaque catégorie bénéficie d'un encadrement et d'horaires
-              adaptés à l'âge des joueurs.
+              Chaque catégorie bénéficie d&apos;un encadrement et d&apos;horaires
+              adaptés à l&apos;âge des joueurs.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function CardCate({ equipes }) {
                 <div className="mt-8 border-t border-slate-100 pt-7">
 
                   <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Horaires d'entraînement
+                    Horaires d&apos;entraînement
                   </p>
 
                   <div className="mt-4 space-y-3">

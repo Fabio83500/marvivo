@@ -14,7 +14,7 @@ export default function CTA() {
           src={terrain}
           alt=""
           fill
-          priority
+          preload
           className="object-cover"
         />
 

@@ -6,7 +6,7 @@ import complexe from "@/images/sept.jpg";
 
 export default function layout() {
   return (
-    <section className="bg-background py-20 md:py-28">
+    <section id="complexe" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">

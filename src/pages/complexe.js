@@ -1,12 +1,26 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import Header from "@/components/Header/layout.js"
+import Footer from "@/components/Footer/layout.js"
 
 import logomarvivo from "@/images/logomarvivo.svg";
 
 export default function Complexe() {
     return (
-        <main className="min-h-screen bg-slate-50">
+        <>
+            <Head>
+                <title>Le complexe | AS Mar Vivo</title>
+                <meta
+                    name="description"
+                    content="Découvrez le complexe sportif de l'AS Mar Vivo à La Seyne-sur-Mer : terrains, vestiaires et espace de convivialité du club."
+                />
+            </Head>
+
+            <Header />
+
+            <main className="min-h-screen bg-slate-50">
 
             {/* ===================================================== */}
             {/* PAGE */}
@@ -35,7 +49,7 @@ export default function Complexe() {
                             alt="AS Mar Vivo"
                             width={130}
                             height={130}
-                            priority
+                            preload
                             className="h-full w-full object-contain"
                         />
 
@@ -166,6 +180,9 @@ export default function Complexe() {
 
             </section>
 
-        </main>
+            </main>
+
+            <Footer />
+        </>
     );
 }

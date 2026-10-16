@@ -52,7 +52,7 @@ export default function Header() {
                             alt="AS Mar Vivo"
                             width={120}
                             height={120}
-                            priority
+                            preload
                             className={`
                                 w-16 md:w-[72px]
                                 transition-all duration-300
@@ -99,6 +99,8 @@ export default function Header() {
                         <div className="group relative">
 
                             <button
+                                type="button"
+                                aria-haspopup="true"
                                 className={`
                                     flex items-center gap-1 py-2 text-sm font-semibold transition
                                     ${
@@ -116,6 +118,7 @@ export default function Header() {
                                     stroke="currentColor"
                                     strokeWidth="2"
                                     viewBox="0 0 24 24"
+                                    aria-hidden="true"
                                 >
                                     <path
                                         strokeLinecap="round"
@@ -127,7 +130,7 @@ export default function Header() {
 
 
                             {/* Dropdown */}
-                            <div className="invisible absolute left-1/2 top-full w-52 -translate-x-1/2 translate-y-2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                            <div className="invisible absolute left-1/2 top-full w-52 -translate-x-1/2 translate-y-2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
 
                                 <div className="overflow-hidden rounded-2xl bg-white p-2 shadow-xl">
 

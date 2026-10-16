@@ -1,11 +1,11 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header/layout.js"
 import Localisation from "@/components/Localisation/layout.js"
 import Footer from "@/components/Footer/layout.js"
 import heroFoot11 from "@/images/quatorze.png";
-// Tu peux remplacer cette image par celle que tu as réellement
 
 export default function FootA11() {
     const equipes = [
@@ -130,8 +130,18 @@ export default function FootA11() {
     ];
 
     return (
-        <main>
+        <>
+            <Head>
+                <title>Foot à 11 (U14-Seniors) | AS Mar Vivo</title>
+                <meta
+                    name="description"
+                    content="Découvrez les équipes Foot à 11 de l'AS Mar Vivo, de U14 à Seniors : horaires d'entraînement, éducateurs et classements."
+                />
+            </Head>
+
             <Header />
+
+            <main>
 
             {/* ===================================================== */}
             {/* HERO */}
@@ -143,7 +153,7 @@ export default function FootA11() {
                     src={heroFoot11}
                     alt="Équipe de football à 11 de Mar Vivo"
                     fill
-                    priority
+                    preload
                     className="object-cover"
                 />
 
@@ -161,7 +171,7 @@ export default function FootA11() {
 
                     <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
                         Retrouvez toutes les équipes de football à 11 de
-                        l'AS Mar Vivo, leurs horaires d'entraînement et les
+                        l&apos;AS Mar Vivo, leurs horaires d&apos;entraînement et les
                         informations liées à la compétition.
                     </p>
 
@@ -218,8 +228,8 @@ export default function FootA11() {
                                 Les séances permettent de travailler les
                                 aspects techniques, tactiques et physiques
                                 tout en conservant les valeurs essentielles
-                                de l'AS Mar Vivo : plaisir, respect,
-                                engagement et esprit d'équipe.
+                                de l&apos;AS Mar Vivo : plaisir, respect,
+                                engagement et esprit d&apos;équipe.
                             </p>
                             
 
@@ -259,7 +269,7 @@ export default function FootA11() {
                         <p className="mt-5 text-lg leading-relaxed text-gray-600">
                             Retrouvez les différentes catégories,
                             leurs entraîneurs et leurs créneaux
-                            d'entraînement.
+                            d&apos;entraînement.
                         </p>
 
                     </div>
@@ -429,8 +439,10 @@ export default function FootA11() {
             </section>
 
             <Localisation />
-            <Footer />
 
-        </main>
+            </main>
+
+            <Footer />
+        </>
     );
 }

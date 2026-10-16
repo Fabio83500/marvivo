@@ -26,7 +26,7 @@ export default function layout() {
                         width={200}
                         height={200}
                         quality={90}
-                        priority
+                        preload
                         alt="Logo AS Mar Vivo"
                         className="object-contain 2xl:w-[20rem] xl:w-[20rem]"
                     />
@@ -69,6 +69,7 @@ export default function layout() {
                                 Nous rejoindre
                             </Link>
 
+ttgg
                         </div>
 
                     </div>

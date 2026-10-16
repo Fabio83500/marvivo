@@ -1,40 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# AS Mar Vivo
 
-## Getting Started
+Site vitrine du club de football AS Mar Vivo (La Seyne-sur-Mer), construit avec [Next.js](https://nextjs.org) (Pages Router).
 
-First, run the development server:
+## Prérequis
+
+- Node.js 20 ou plus récent
+- npm
+
+## Installation
+
+```bash
+npm install
+```
+
+Copiez ensuite le fichier d'exemple des variables d'environnement et renseignez vos propres valeurs :
+
+```bash
+cp .env.example .env.local
+```
+
+## Lancer le projet en développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est alors accessible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Vérifier le code (lint)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+npm run lint
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Builder pour la production
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Pour lancer le build en local (après `npm run build`) :
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Déploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Le projet est un site Next.js standard et peut être déployé sur n'importe quelle plateforme supportant Next.js (Vercel, un serveur Node.js, etc.).
 
-## Deploy on Vercel
+1. Configurer les variables d'environnement (voir ci-dessous) sur la plateforme de déploiement.
+2. Builder le projet : `npm run build`.
+3. Démarrer le serveur de production : `npm run start` (ou laisser la plateforme le faire automatiquement, par exemple sur Vercel).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Variables d'environnement
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Voir `.env.example` pour la liste complète. Elles sont nécessaires au bon fonctionnement du formulaire de contact (`/contact`), qui envoie un email via SMTP depuis l'API route `src/pages/api/contact.js`.
+
+| Variable            | Description                                                        |
+| ------------------- | -------------------------------------------------------------------- |
+| `SMTP_HOST`         | Adresse du serveur SMTP utilisé pour l'envoi d'emails.               |
+| `SMTP_PORT`         | Port du serveur SMTP (587 pour STARTTLS, 465 pour SSL).              |
+| `SMTP_USER`         | Identifiant de connexion au serveur SMTP.                            |
+| `SMTP_PASSWORD`     | Mot de passe (ou mot de passe d'application) du compte SMTP.          |
+| `CONTACT_EMAIL_TO`  | Adresse email du club qui doit recevoir les messages du formulaire.   |
+
+Sans ces variables, le formulaire de contact reste fonctionnel côté validation mais renvoie une erreur côté utilisateur lors de l'envoi (message informant que le service est momentanément indisponible).
+
+## Structure du projet
+
+Voir [CLAUDE.md](./CLAUDE.md) pour le détail de la structure du code, des conventions utilisées et des points d'attention spécifiques à cette version de Next.js.

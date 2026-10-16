@@ -22,11 +22,12 @@ export default function layout() {
           <div className="grid gap-5 md:grid-cols-3">
 
             <Link
-              href="https://asmarvivo.fr/images/stories/Saison_2025_2026/planning_foot_educatif/Planning_Foot_Educatif_Previsionnel_2025_2026.pdf" 
-
+              href="https://asmarvivo.fr/images/stories/Saison_2025_2026/planning_foot_educatif/Planning_Foot_Educatif_Previsionnel_2025_2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-2xl border border-slate-200 p-7 transition hover:-translate-y-1 hover:border-primary hover:shadow-lg"
             >
-              <span className="text-3xl">📅</span>
+              <span className="text-3xl" aria-hidden="true">📅</span>
 
               <h3 className="mt-5 text-xl font-bold text-primary">
                 Calendrier des plateaux
@@ -37,20 +38,19 @@ export default function layout() {
                 pour les jeunes catégories.
               </p>
 
-              <Link 
-              href="https://asmarvivo.fr/images/stories/Saison_2025_2026/planning_foot_educatif/Planning_Foot_Educatif_Previsionnel_2025_2026.pdf" 
-              className="mt-5 block font-semibold text-primary">
+              <span className="mt-5 block font-semibold text-primary">
                 Consulter →
-              </Link>
+              </span>
             </Link>
 
 
             <Link
               href="https://var.fff.fr/wp-content/uploads/sites/66/2023/02/FFF_Affiche-lois-du-jeu_2022-2023_A4_05.png"
-
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-2xl border border-slate-200 p-7 transition hover:-translate-y-1 hover:border-primary hover:shadow-lg"
             >
-              <span className="text-3xl">⚽</span>
+              <span className="text-3xl" aria-hidden="true">⚽</span>
 
               <h3 className="mt-5 text-xl font-bold text-primary">
                 Lois du jeu
@@ -61,19 +61,19 @@ export default function layout() {
                 à 5 pour les catégories U8-U9.
               </p>
 
-              <Link 
-              href="https://var.fff.fr/wp-content/uploads/sites/66/2023/02/FFF_Affiche-lois-du-jeu_2022-2023_A4_05.png"
-               className="mt-5 block font-semibold text-primary">
+              <span className="mt-5 block font-semibold text-primary">
                 Découvrir →
-              </Link>
+              </span>
             </Link>
 
 
             <Link
-              href="https://media.fff.fr/uploads/document/560cf5cbf13e03fd0acc9ee310ec623d.pdf" 
+              href="https://media.fff.fr/uploads/document/560cf5cbf13e03fd0acc9ee310ec623d.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-2xl border border-slate-200 p-7 transition hover:-translate-y-1 hover:border-primary hover:shadow-lg"
             >
-              <span className="text-3xl">📖</span>
+              <span className="text-3xl" aria-hidden="true">📖</span>
 
               <h3 className="mt-5 text-xl font-bold text-primary">
                 Guide du football
@@ -84,10 +84,9 @@ export default function layout() {
                 pour les catégories U6-U7.
               </p>
 
-              <Link href="https://media.fff.fr/uploads/document/560cf5cbf13e03fd0acc9ee310ec623d.pdf" 
-              className="mt-5 block font-semibold text-primary">
+              <span className="mt-5 block font-semibold text-primary">
                 Consulter →
-              </Link>
+              </span>
             </Link>
 
           </div>

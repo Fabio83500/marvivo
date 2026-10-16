@@ -28,7 +28,7 @@ export default function layout() {
       
                   <p className="mt-4 leading-7 text-slate-600">
                     Les séances permettent de développer les premières bases
-                    techniques, la motricité et l'esprit collectif, tout en
+                    techniques, la motricité et l&apos;esprit collectif, tout en
                     conservant une place essentielle au plaisir du jeu.
                   </p>
       

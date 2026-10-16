@@ -24,7 +24,7 @@ export default function Footer() {
                         />
 
                         <p className="mt-5 text-white/80 max-w-md leading-relaxed">
-                            L'AS Mar Vivo est un club de football situé à
+                            L&apos;AS Mar Vivo est un club de football situé à
                             La Seyne-sur-Mer. Retrouvez nos équipes, nos
                             actualités et toutes les informations du club.
                         </p>
@@ -129,7 +129,15 @@ export default function Footer() {
                         © {new Date().getFullYear()} AS Mar Vivo. Tous droits réservés. 
                     </span>
                      <span>
-                        Made with ❤️ by <Link href="http://mfagency.fr" >MF Agency </Link>
+                        Made with ❤️ by{" "}
+                        <Link
+                            href="https://mfagency.fr"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-white"
+                        >
+                            MF Agency
+                        </Link>
                     </span>
 
                     <div className="flex gap-6">

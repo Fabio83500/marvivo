@@ -1,12 +1,23 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Header from "@/components/Header/layout.js"
 import Localisation from "@/components/Localisation/layout.js"
 import Footer from "@/components/Footer/layout.js"
 export default function PolitiqueConfidentialite() {
     return (
-        <main className="min-h-screen bg-slate-50">
+        <>
+            <Head>
+                <title>Politique de confidentialité | AS Mar Vivo</title>
+                <meta
+                    name="description"
+                    content="Politique de confidentialité de l'AS Mar Vivo : données personnelles collectées, finalités, durée de conservation et vos droits."
+                />
+            </Head>
+
             <Header />
+
+            <main className="min-h-screen bg-slate-50">
 
             <section className="relative overflow-hidden bg-primary px-6 py-32 text-white">
                 <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/5" />
@@ -285,8 +296,10 @@ export default function PolitiqueConfidentialite() {
                 </div>
             </section>
             <Localisation />
-            <Footer />
 
-        </main>
+            </main>
+
+            <Footer />
+        </>
     );
 }
