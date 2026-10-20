@@ -1,21 +1,46 @@
-import React from 'react'
+import React from "react";
 
-export default function layout() {
+import { club } from "@/data/club.js";
+
+export default function Localisation() {
     return (
-        <section aria-labelledby="localisation-heading">
-            <h2 id="localisation-heading" className="sr-only">
-                Nous trouver
-            </h2>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2913.8294393303845!2d5.8841674763378125!3d43.087081038861264!2m3!1f0!2f0!3f0!3m2!
-    1i1024!2i768!4f13.1!3m3!1m2!1s0x12c90345ee836489%3A0x1886b837974b7c7a!2sStade%20Squillaci%2C%20Rue%20du%20Lot.%20l'Evescat%2C%2083500%20La%20Seyne-sur-Mer
-    !5e0!3m2!1sfr!2sfr!4v1788099986471!5m2!1sfr!2sfr"
-                title="Localisation du Stade Squillaci, AS Mar Vivo"
-                allowFullScreen
-                loading="lazy"
-                className="h-80 w-full"
-                referrerPolicy="strict-origin-when-cross-origin"
-            />
+        <section aria-labelledby="localisation-titre" className="relative bg-background">
+            <div className="grid lg:grid-cols-[1fr_1.6fr]">
+                <div className="bg-primary-dark px-5 py-14 text-white md:px-12 lg:py-20">
+                    <span className="eyebrow">Nous trouver</span>
+                    <h2 id="localisation-titre" className="mt-4 font-display text-4xl font-extrabold uppercase italic md:text-5xl">
+                        {club.stade}
+                    </h2>
+                    <address className="mt-8 space-y-6 not-italic">
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Terrain d&apos;entraînement</p>
+                            <p className="mt-1 text-white/85">{club.stadeAdresse}</p>
+                        </div>
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Siège social</p>
+                            <p className="mt-1 text-white/85">{club.siege}</p>
+                        </div>
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Contact</p>
+                            <p className="mt-1">
+                                <a href={`mailto:${club.email}`} className="text-white/85 hover:text-secondary">{club.email}</a>
+                                <br />
+                                <a href={`tel:${club.telephoneLien}`} className="text-white/85 hover:text-secondary">{club.telephone}</a>
+                            </p>
+                        </div>
+                    </address>
+                    <a href={club.mapsLien} target="_blank" rel="noopener noreferrer" className="btn-gold mt-10">
+                        Itinéraire ↗
+                    </a>
+                </div>
+                <iframe
+                    src={club.mapsEmbed}
+                    title={`Plan d'accès au ${club.stade}, AS Mar Vivo`}
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="h-96 w-full border-0 lg:h-full lg:min-h-[480px]"
+                />
+            </div>
         </section>
-    )
+    );
 }

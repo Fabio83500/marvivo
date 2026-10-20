@@ -1,7 +1,24 @@
 @import "tailwindcss";
 
+/* Typographies chargées via next/font dans _app.js. `inline` est nécessaire :
+   les variables --font-barlow* sont définies sur le conteneur de l'app, pas sur :root. */
+@theme inline {
+  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow-condensed), var(--font-barlow), ui-sans-serif, sans-serif;
+}
+
 @theme {
-  --animate-marquee: marquee 25s linear infinite;
+  /* Couleurs du club (direction artistique d'origine) */
+  --color-primary: #105090;       /* Bleu club */
+  --color-primary-dark: #0b3a6b;  /* Bleu nuit, fonds sombres */
+  --color-navy: #071f3d;          /* Bleu très profond, footer */
+  --color-secondary: #f0b050;     /* Doré */
+  --color-secondary-light: #f6c879;
+  --color-text: #12263a;          /* Texte foncé */
+  --color-background: #f7f9fc;    /* Fond principal */
+  --color-light: #80c0f0;         /* Bleu clair */
+
+  --animate-marquee: marquee 40s linear infinite;
 
   @keyframes marquee {
     from {
@@ -12,34 +29,75 @@
       transform: translateX(-50%);
     }
   }
-  --color-primary: #105090;     /* Bleu club */
-  --color-secondary: #F0B050;   /* Jaune / doré */
-  --color-text: #12263A;        /* Texte foncé */
-  --color-background: #F7F9FC;  /* Fond principal */
-  --color-light: #80C0F0;       /* Bleu clair */
 }
 
-@layer components {
-  .container-custom {
-    @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
 
-  .section {
-    @apply py-20 lg:py-28;
+  body {
+    @apply bg-background font-sans text-text;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium transition;
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
   }
-  
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-secondary;
+  }
 }
 
-
-
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-custom {
+  @apply mx-auto w-full max-w-7xl px-5 md:px-8;
 }
 
+@utility section {
+  @apply py-20 lg:py-28;
+}
+
+/* Petit sur-titre doré au-dessus des titres de section */
+@utility eyebrow {
+  @apply inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.25em] text-secondary;
+
+  &::before {
+    content: "";
+    @apply h-0.5 w-8 bg-secondary;
+  }
+}
+
+@utility title-xl {
+  @apply font-display text-5xl leading-[0.95] font-extrabold uppercase italic tracking-tight md:text-7xl lg:text-8xl;
+}
+
+@utility title-lg {
+  @apply font-display text-4xl leading-none font-extrabold uppercase italic tracking-tight md:text-5xl lg:text-6xl;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-300;
+}
+
+@utility btn-gold {
+  @apply btn bg-secondary text-primary-dark hover:-translate-y-0.5 hover:bg-secondary-light hover:shadow-lg hover:shadow-secondary/30;
+}
+
+@utility btn-blue {
+  @apply btn bg-primary text-white hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30;
+}
+
+@utility btn-ghost {
+  @apply btn border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-primary;
+}
+
+/* Motif de rayures diagonales, rappel des maillots */
+@utility stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 0.04) 0 2px,
+    transparent 2px 22px
+  );
+}

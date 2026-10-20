@@ -21,10 +21,10 @@ export default function PolitiqueConfidentialite() {
 
             <section className="relative overflow-hidden bg-primary px-6 py-32 text-white">
                 <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/5" />
-                <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-[#F5B642]/10" />
+                <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-secondary/10" />
 
                 <div className="relative mx-auto max-w-5xl">
-                    <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#F5B642]">
+                    <span className="text-sm font-bold uppercase tracking-[0.25em] text-secondary">
                         Vie privée
                     </span>
 
@@ -232,7 +232,7 @@ export default function PolitiqueConfidentialite() {
                             <p>
                                 <a
                                     href="mailto:asmarvivo@orange.fr"
-                                    className="font-bold text-primary hover:text-[#F5B642]"
+                                    className="font-bold text-primary hover:text-secondary"
                                 >
                                     asmarvivo@orange.fr
                                 </a>

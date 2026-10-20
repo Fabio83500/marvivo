@@ -15,35 +15,30 @@ Site vitrine du club de football AS Mar Vivo (La Seyne-sur-Mer), en français.
 ```
 src/
   pages/              # Routing (Pages Router)
-    _app.js           # Wrapper global, importe globals.css
-    _document.js      # <Html lang="fr"> custom
-    index.js          # Accueil
-    contact.js        # Page Contact (coordonnées + formulaire)
-    complexe.js        # Page "Le complexe"
-    mentions-legales.js
-    politique-de-confidentialite.js
-    categories/
-      foot-a-5.js, foot-a-8.js, foot-a-11.js
-    api/
-      contact.js      # API route POST du formulaire de contact
-  components/
-    <Nom>/layout.js    # Chaque composant vit dans son propre dossier, fichier `layout.js`, export default
-    categories/<Nom>/layout.js  # Variantes dédiées aux pages catégories
-  images/              # Images statiques, importées via `@/images/...` (import statique next/image)
-  styles/globals.css   # Thème Tailwind v4 (@theme) + styles globaux
+    _app.js           # Wrapper global, globals.css + polices Barlow (next/font)
+    index.js, le-club.js, inscriptions.js, complexe.js, contact.js
+    mentions-legales.js, politique-de-confidentialite.js
+    categories/foot-a-5.js, foot-a-8.js, foot-a-11.js  # 3 lignes chacune, modèle CategoryPage
+    api/contact.js    # POST du formulaire (Nodemailer, variables SMTP_* dans .env.local, voir .env.example)
+  data/
+    club.js           # Coordonnées, contacts, partenaires, navigation, saison en cours
+    categories.js     # Contenu des pages Foot à 5 / 8 / 11 (équipes, horaires, éducateurs)
+  components/<Nom>/layout.js  # Page (gabarit Head+Header+main+Footer), PageHero, SectionHeading, CategoryPage, ContactForm…
+  images/             # logomarvivo.svg, label-fff.png, photos/ (≤2000 px), partenaires/
+  styles/globals.css  # Thème Tailwind v4 (@theme) + utilitaires (@utility btn-gold, eyebrow, title-lg…)
 ```
 
-Alias d'import : `@/*` → `src/*` (voir `jsconfig.json`/`next.config`).
+Alias d'import : `@/*` → `src/*`.
 
 ## Conventions observées
 
-- Chaque composant est un fichier `src/components/<Nom>/layout.js` exportant un composant par défaut (souvent nommé `layout` ou le nom du composant).
-- Les images proviennent de `src/images` et sont importées statiquement (`import x from "@/images/x.jpg"`) puis passées à `next/image` — le `width`/`height` est alors inféré automatiquement. Pas de balises `<img>` brutes dans le code.
-- Navigation via `next/link` (`<Link href="...">`), jamais de `<a href>` pour les liens internes.
-- Couleurs du thème définies dans `globals.css` (`--color-primary`, `--color-secondary`, `--color-text`, `--color-background`, `--color-light`) et utilisées via les classes Tailwind `text-primary`, `bg-primary`, `text-secondary`, etc. Le code utilise aussi parfois des couleurs ad hoc en hexadécimal (`#F5B642`, `#F0B34B`) qui correspondent approximativement à `secondary` — à harmoniser si l'occasion se présente, mais ne pas réécrire sans raison.
-- Contenu entièrement en français ; attention aux apostrophes typographiques dans le JSX (`react/no-unescaped-entities` — utiliser `&apos;` ou une apostrophe simple échappée).
-- Header et Footer sont des composants partagés (`@/components/Header/layout.js`, `@/components/Footer/layout.js`) inclus sur chaque page. Il existe une **copie dupliquée** du Header dans `@/components/categories/Header/layout.js` (même contenu) utilisée par `categories/foot-a-8.js` — ne pas s'étonner de la duplication, c'est existant.
-- Chaque page doit avoir un unique `<h1>`, une structure sémantique `<header>` (hors de `<main>`) / `<main>` / `<section>` / `<footer>` (hors de `<main>`), et un `<Head>` (`next/head`) avec `<title>` + `<meta name="description">`.
+- Le contenu (horaires, éducateurs, téléphones, partenaires) se modifie dans `src/data/`, pas dans les composants.
+- Chaque page utilise `<Page title description>` puis `<PageHero>` (qui porte l'unique `<h1>`).
+- Images importées statiquement depuis `src/images` et passées à `next/image`. Pas de `<img>` brut. Recompresser toute nouvelle photo (≤2000 px de large).
+- Navigation interne via `next/link`.
+- Couleurs uniquement via le thème : `primary`, `primary-dark`, `navy`, `secondary` (doré), `secondary-light`, `text`, `background`, `light`. Pas d'hexadécimal ad hoc.
+- Titres en `font-display` (Barlow Condensed, majuscules italiques) via les utilitaires `title-xl` / `title-lg`.
+- Contenu entièrement en français ; échapper les apostrophes dans le JSX (`&apos;`).
 
 ## Points d'attention spécifiques à cette version de Next.js
 

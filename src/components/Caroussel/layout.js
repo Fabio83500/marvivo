@@ -1,50 +1,38 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import logomf from "@/images/logomf.png";
-import logogarden from "@/images/logo2.png";
-import adi from "@/images/adi.png";
-import abcdom from "@/images/abcdom.png";
-import funnyland from "@/images/funnyland.png";
-import immoselect from "@/images/immoselect.webp";
-import intermarche from "@/images/intermarche.png";
-import intersport from "@/images/intersport.png";
-import lapiazza from "@/images/lapiazza.png";
-import macdo from "@/images/macdo.png";
+import { partenaires } from "@/data/club.js";
 
-const logos = [
-  { src: logomf, name: "MF Agency" },
-  { src: logogarden, name: "partenaire" },
-  { src: adi, name: "ADI" },
-  { src: abcdom, name: "ABC Dom" },
-  { src: funnyland, name: "Funnyland" },
-  { src: immoselect, name: "Immo Select" },
-  { src: intermarche, name: "Intermarché" },
-  { src: intersport, name: "Intersport" },
-  { src: lapiazza, name: "La Piazza" },
-  { src: macdo, name: "McDonald's" },
-];
+export default function Partenaires() {
+    // La liste est dupliquée pour que le défilement boucle sans coupure.
+    const defilement = [...partenaires, ...partenaires];
 
-export default function PartnersCarousel() {
-  return (
-    <section id="partenaires" className="overflow-hidden">
-      <h2 className="sr-only">Nos partenaires</h2>
-      <div className="overflow-hidden py-10">
-        <div className="flex w-max gap-16 animate-marquee">
-          {logos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex h-24 w-60 shrink-0 items-center justify-center"
-            >
-              <Image
-                src={logo.src}
-                alt={`Logo ${logo.name}`}
-                className="max-h-full max-w-full object-contain"
-              />
+    return (
+        <section id="partenaires" className="scroll-mt-20 border-y border-primary/10 bg-white py-16">
+            <div className="container-custom flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+                <div>
+                    <span className="eyebrow">Ils nous soutiennent</span>
+                    <h2 className="mt-3 font-display text-3xl font-extrabold uppercase italic text-primary md:text-4xl">Nos partenaires</h2>
+                </div>
+                <Link href="/contact?sujet=Partenariat" className="text-sm font-bold uppercase tracking-wider text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-secondary">
+                    Devenir partenaire →
+                </Link>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+
+            <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                <ul className="flex w-max animate-marquee gap-6 hover:[animation-play-state:paused] motion-reduce:animate-none">
+                    {defilement.map((p, i) => (
+                        <li
+                            key={`${p.nom}-${i}`}
+                            aria-hidden={i >= partenaires.length ? true : undefined}
+                            className="flex h-28 w-52 shrink-0 items-center justify-center rounded-2xl bg-background p-5 grayscale transition hover:grayscale-0"
+                        >
+                            <Image src={p.logo} alt={i >= partenaires.length ? "" : p.nom} className="max-h-full w-auto object-contain" />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+    );
 }

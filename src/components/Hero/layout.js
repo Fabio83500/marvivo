@@ -1,82 +1,72 @@
-import React from 'react'
-import logomarvivo from "@/images/logomarvivo.svg"
-import hero from "@/images/hero.jpg"
-import Image from 'next/image'
-import Link from 'next/link'
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function layout() {
+import logomarvivo from "@/images/logomarvivo.svg";
+import { photos, club } from "@/data/club.js";
+
+export default function Hero() {
     return (
-        <div className="z-1">
-            <div
-                className="relative min-h-screen bg-cover bg-center"
-                style={{ backgroundImage: `url(${hero.src})` }}
-            >
+        <section className="relative flex min-h-svh items-center overflow-hidden bg-primary-dark text-white">
+            <Image
+                src={photos.hero}
+                alt="Une équipe de l'AS Mar Vivo au Stade Squillaci"
+                fill
+                preload
+                sizes="100vw"
+                className="object-cover object-[center_30%]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-primary-dark/20" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/40" aria-hidden="true" />
+            <div className="absolute inset-0 stripes" aria-hidden="true" />
+            <div className="absolute -right-32 top-0 hidden h-full w-[38%] -skew-x-12 border-l-4 border-secondary/60 bg-primary/30 lg:block" aria-hidden="true" />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/50"></div>
+            <div className="container-custom relative grid items-center gap-12 pt-28 pb-24 lg:grid-cols-[1.4fr_1fr]">
+                <div>
+                    <span className="eyebrow">La Seyne-sur-Mer · Depuis {club.creation}</span>
 
-                {/* Dégradé en bas pour le texte */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <h1 className="title-xl mt-6">
+                        <span className="sr-only">AS Mar Vivo, club de football de La Seyne-sur-Mer. </span>
+                        Une équipe.
+                        <span className="block">Une passion.</span>
+                        <span className="block text-secondary">Un club.</span>
+                    </h1>
 
+                    <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
+                        De l&apos;école de foot aux seniors, l&apos;AS Mar Vivo accueille petits et grands au Stade Squillaci
+                        pour apprendre, progresser et partager la passion du football.
+                    </p>
 
-                {/* Logo central */}
-                <div className="flex flex-col px-4 md:px-8 lg:px-0 items-center justify-center absolute inset-0">
+                    <div className="mt-10 flex flex-wrap gap-4">
+                        <Link href="/inscriptions" className="btn-gold">
+                            Rejoindre le club
+                            <span aria-hidden="true">→</span>
+                        </Link>
+                        <Link href="#equipes" className="btn-ghost">
+                            Découvrir nos équipes
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="hidden justify-center lg:flex">
                     <Image
                         src={logomarvivo}
-                        width={200}
-                        height={200}
-                        quality={90}
+                        alt=""
+                        width={360}
+                        height={360}
                         preload
-                        alt="Logo AS Mar Vivo"
-                        className="object-contain 2xl:w-[20rem] xl:w-[20rem]"
+                        className="w-80 drop-shadow-[0_25px_50px_rgba(0,0,0,0.45)] xl:w-96"
                     />
                 </div>
-
-
-                {/* Texte du Hero */}
-                <div className="absolute bottom-10 left-0 w-full px-6 md:px-12 lg:px-20">
-
-                    <div className="max-w-2xl text-left">
-
-                        <span className="text-secondary font-semibold tracking-[0.25em] uppercase text-sm md:text-base">
-                            AS Mar Vivo
-                        </span>
-
-                        <h1 className="text-white font-bold text-3xl md:text-5xl lg:text-6xl leading-tight mt-2">
-                            Une équipe.
-                            <br />
-                            Une passion. Un club.
-                        </h1>
-
-                        <p className="text-white/90 text-base md:text-lg mt-4 max-w-xl">
-                            Découvrez nos équipes, notre complexe et toute l’actualité
-                            de l’AS Mar Vivo.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4 mt-6">
-
-                            <Link
-                                href="#categories"
-                                className="bg-secondary text-primary font-semibold px-6 py-3 rounded-full hover:scale-105 transition-transform"
-                            >
-                                Découvrir nos équipes
-                            </Link>
-
-                            <Link
-                                href="/contact"
-                                className="border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-primary transition"
-                            >
-                                Nous rejoindre
-                            </Link>
-
-ttgg
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
-        </div>
-    )
+
+            <a
+                href="#club"
+                className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition hover:text-secondary md:flex"
+            >
+                Défiler
+                <span className="h-10 w-px animate-pulse bg-current" aria-hidden="true" />
+            </a>
+        </section>
+    );
 }

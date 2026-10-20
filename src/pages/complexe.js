@@ -1,188 +1,115 @@
-import React from "react";
-import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/Header/layout.js"
-import Footer from "@/components/Footer/layout.js"
+import Link from "next/link";
 
-import logomarvivo from "@/images/logomarvivo.svg";
+import Page from "@/components/Page/layout.js";
+import PageHero from "@/components/PageHero/layout.js";
+import SectionHeading from "@/components/SectionHeading/layout.js";
+import Localisation from "@/components/Localisation/layout.js";
+import { club, photos } from "@/data/club.js";
+
+const installations = [
+  {
+    titre: "Le terrain",
+    texte:
+      "Un terrain synthétique praticable toute l'année, qui accueille les entraînements de toutes nos catégories et les matchs à domicile.",
+  },
+  {
+    titre: "Les vestiaires",
+    texte: "Des vestiaires pour nos équipes, nos adversaires et les arbitres, les jours d'entraînement comme les jours de match.",
+  },
+  {
+    titre: "La buvette",
+    texte: "Le point de rendez-vous des familles et des supporters, avant, pendant et après les rencontres.",
+  },
+];
+
+const galerie = [photos.hero, photos.six, photos.quatorze, photos.neuf, photos.treize];
 
 export default function Complexe() {
-    return (
-        <>
-            <Head>
-                <title>Le complexe | AS Mar Vivo</title>
-                <meta
-                    name="description"
-                    content="Découvrez le complexe sportif de l'AS Mar Vivo à La Seyne-sur-Mer : terrains, vestiaires et espace de convivialité du club."
+  return (
+    <Page
+      title="Le complexe | AS Mar Vivo"
+      description="Le Stade Squillaci, complexe sportif de l'AS Mar Vivo à La Seyne-sur-Mer : terrain, vestiaires, buvette et accès."
+    >
+      <PageHero
+        surtitre="Notre complexe"
+        titre={club.stade}
+        texte="Le terrain de l'AS Mar Vivo, au cœur de La Seyne-sur-Mer : là où nos équipes s'entraînent, jouent et se retrouvent."
+        image={photos.quatorze}
+      >
+        <a href={club.mapsLien} target="_blank" rel="noopener noreferrer" className="btn-gold">
+          Itinéraire ↗
+        </a>
+      </PageHero>
+
+      <section className="section">
+        <div className="container-custom">
+          <SectionHeading
+            surtitre="Les installations"
+            titre="Un lieu de vie pour le club"
+            texte="Plus qu'un terrain : un lieu où joueurs, éducateurs, familles et supporters partagent leur passion tout au long de la saison."
+          />
+          <ul className="mt-12 grid gap-5 md:grid-cols-3">
+            {installations.map((item, i) => (
+              <li key={item.titre} className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10">
+                <span className="font-display text-5xl font-extrabold italic text-secondary">0{i + 1}</span>
+                <h3 className="mt-3 text-3xl font-extrabold uppercase italic text-primary">{item.titre}</h3>
+                <p className="mt-3 leading-relaxed text-text/70">{item.texte}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="container-custom">
+          <SectionHeading surtitre="En images" titre="La vie au stade" />
+          <div className="mt-10 grid auto-rows-[180px] grid-cols-2 gap-4 md:auto-rows-[220px] md:grid-cols-4">
+            {galerie.map((photo, i) => (
+              <div
+                key={photo.src}
+                className={`relative overflow-hidden rounded-2xl ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+              >
+                <Image
+                  src={photo}
+                  alt={`Équipe de l'AS Mar Vivo au ${club.stade}`}
+                  fill
+                  sizes={i === 0 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
+                  className="object-cover transition-transform duration-700 hover:scale-105"
                 />
-            </Head>
-
-            <Header />
-
-            <main className="min-h-screen bg-slate-50">
-
-            {/* ===================================================== */}
-            {/* PAGE */}
-            {/* ===================================================== */}
-
-            <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-
-                {/* Décorations */}
-
-                <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-primary/5" />
-
-                <div className="pointer-events-none absolute -bottom-48 -left-40 h-[550px] w-[550px] rounded-full bg-[#F5B642]/10" />
-
-                <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/5" />
-
-                {/* Contenu */}
-
-                <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-32 text-center">
-
-                    {/* Logo */}
-
-                    <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-white p-5 shadow-xl ring-1 ring-black/5 md:h-32 md:w-32">
-
-                        <Image
-                            src={logomarvivo}
-                            alt="AS Mar Vivo"
-                            width={130}
-                            height={130}
-                            preload
-                            className="h-full w-full object-contain"
-                        />
-
-                    </div>
-
-
-                    {/* Petit label */}
-
-                    <div className="mt-10">
-
-                        <span className="inline-flex items-center gap-2 rounded-full border border-[#F5B642]/30 bg-[#F5B642]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#b47d15]">
-
-                            <span className="h-1.5 w-1.5 rounded-full bg-[#F5B642] animate-pulse"></span>
-
-                            En préparation
-
-                        </span>
-
-                    </div>
-
-
-                    {/* Titre */}
-
-                    <h1 className="mt-7 text-5xl font-black tracking-tight text-primary md:text-7xl">
-
-                        Le complexe
-
-                    </h1>
-
-
-                    {/* Ligne dorée */}
-
-                    <div className="mx-auto mt-6 h-1 w-16 rounded-full bg-[#F5B642]" />
-
-
-                    {/* Texte */}
-
-                    <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-gray-600 md:text-xl">
-
-                        <span className="font-semibold text-primary">
-                            Présentation prochainement disponible.
-                        </span>
-
-                        <br />
-
-                        Nous préparons actuellement cette page afin de vous
-                        présenter prochainement les installations de
-                        l&apos;AS Mar Vivo.
-
-                    </p>
-
-
-                    {/* Cartes */}
-
-                    <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
-
-                        <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-
-                            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-xl">
-                                ⚽
-                            </div>
-
-                            <p className="mt-3 text-sm font-bold text-primary">
-                                Terrains
-                            </p>
-
-                        </div>
-
-
-                        <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-
-                            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-xl">
-                                🏠
-                            </div>
-
-                            <p className="mt-3 text-sm font-bold text-primary">
-                                Vestiaires
-                            </p>
-
-                        </div>
-
-
-                        <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-
-                            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-xl">
-                                ☕
-                            </div>
-
-                            <p className="mt-3 text-sm font-bold text-primary">
-                                Buvette
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    {/* Boutons */}
-
-                    <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
-
-                        <Link
-                            href="/"
-                            className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                        >
-                            <span className="mr-2">←</span>
-                            Retour à l&apos;accueil
-                        </Link>
-
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center justify-center rounded-full border border-primary/10 bg-white px-7 py-3.5 font-bold text-primary shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-[#F5B642]/50 hover:shadow-md"
-                        >
-                            Nous contacter
-                            <span className="ml-2">→</span>
-                        </Link>
-
-                    </div>
-
-
-                    {/* Bas de page */}
-
-                    <p className="mt-16 text-sm text-gray-400">
-                        AS Mar Vivo
-                    </p>
-
-                </div>
-
-            </section>
-
-            </main>
-
-            <Footer />
-        </>
-    );
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-custom grid gap-8 md:grid-cols-2">
+          <div className="rounded-3xl bg-primary p-8 text-white md:p-10">
+            <span className="eyebrow">Venir au stade</span>
+            <h2 className="mt-4 font-display text-4xl font-extrabold uppercase italic">Accès</h2>
+            <p className="mt-4 leading-relaxed text-white/80">
+              {club.stade}, {club.stadeAdresse}. Merci de respecter le voisinage en vous garant sur les places prévues à cet effet.
+            </p>
+            <a href={club.mapsLien} target="_blank" rel="noopener noreferrer" className="btn-gold mt-8">
+              Ouvrir dans Google Maps ↗
+            </a>
+          </div>
+          <div className="rounded-3xl bg-white p-8 ring-1 ring-primary/10 md:p-10">
+            <span className="eyebrow">Au quotidien</span>
+            <h2 className="mt-4 font-display text-4xl font-extrabold uppercase italic text-primary">Horaires</h2>
+            <p className="mt-4 leading-relaxed text-text/70">
+              Le stade vit du lundi au vendredi en fin d&apos;après-midi et en soirée pour les entraînements, le mercredi après-midi pour
+              l&apos;école de foot, et le week-end pour les matchs et plateaux.
+            </p>
+            <Link href="/categories/foot-a-5" className="btn-blue mt-8">
+              Voir les horaires par équipe
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Localisation />
+    </Page>
+  );
 }

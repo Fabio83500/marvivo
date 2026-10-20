@@ -1,91 +1,61 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import complexe from "@/images/sept.jpg";
+import { photos, club } from "@/data/club.js";
+import SectionHeading from "@/components/SectionHeading/layout.js";
 
-export default function layout() {
-  return (
-    <section id="complexe" className="bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+const atouts = [
+    { titre: "Terrain synthétique", texte: "Un terrain praticable toute l'année, quelle que soit la météo." },
+    { titre: "Vestiaires", texte: "Des vestiaires pour accueillir nos équipes et nos adversaires." },
+    { titre: "Buvette", texte: "Un espace convivial pour se retrouver avant et après les matchs." },
+];
 
-        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+export default function Complexe() {
+    return (
+        <section id="complexe" className="section scroll-mt-20">
+            <div className="container-custom grid items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+                <div className="order-2 lg:order-1">
+                    <SectionHeading
+                        surtitre="Notre complexe"
+                        titre={`Le ${club.stade}`}
+                        texte="Plus qu'un terrain, un lieu de vie. C'est ici que nos équipes s'entraînent chaque semaine, reçoivent leurs adversaires et que joueurs, éducateurs et familles se retrouvent."
+                    />
+                    <ul className="mt-8 space-y-4">
+                        {atouts.map((a) => (
+                            <li key={a.titre} className="flex gap-4">
+                                <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-secondary font-bold text-primary-dark" aria-hidden="true">
+                                    ✓
+                                </span>
+                                <p>
+                                    <span className="font-bold text-primary">{a.titre}.</span>{" "}
+                                    <span className="text-text/70">{a.texte}</span>
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                    <Link href="/complexe" className="btn-blue mt-10">
+                        Découvrir le complexe
+                        <span aria-hidden="true">→</span>
+                    </Link>
+                </div>
 
-          {/* Contenu */}
-          <div>
-            <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
-              Notre complexe
-            </span>
-
-            <h2 className="mt-3 text-3xl font-bold leading-tight text-primary md:text-4xl">
-              Un lieu au cœur de la vie du club
-            </h2>
-
-            <p className="mt-6 text-base leading-7 text-text/75">
-              Plus qu&apos;un terrain, notre complexe est un véritable lieu de
-              vie pour l&apos;AS Mar Vivo. C&apos;est ici que nos équipes
-              s&apos;entraînent, se retrouvent et partagent leur passion du
-              football tout au long de la saison.
-            </p>
-
-            <p className="mt-4 text-base leading-7 text-text/75">
-              Joueurs, éducateurs, familles et supporters s&apos;y retrouvent
-              dans une ambiance conviviale, autour du sport et des valeurs qui
-              font l&apos;identité du club.
-            </p>
-
-            {/* Petites infos */}
-            <div className="mt-8 grid grid-cols-2 gap-4">
-
-              <div className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-                <div className="text-2xl">⚽</div>
-                <h3 className="mt-2 font-semibold text-primary">
-                  Nos terrains
-                </h3>
-                <p className="mt-1 text-sm text-text/65">
-                  Des espaces dédiés à l&apos;entraînement et à la compétition.
-                </p>
-              </div>
-
-              <div className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-                <div className="text-2xl">☕</div>
-                <h3 className="mt-2 font-semibold text-primary">
-                  La convivialité
-                </h3>
-                <p className="mt-1 text-sm text-text/65">
-                  Un espace pour se retrouver avant et après les matchs.
-                </p>
-              </div>
-
+                <div className="relative order-1 lg:order-2">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+                        <Image
+                            src={photos.quinze}
+                            alt={`Une équipe de l'AS Mar Vivo sur le terrain du ${club.stade}`}
+                            fill
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="object-cover"
+                        />
+                    </div>
+                    <div className="absolute -bottom-6 left-6 rounded-2xl bg-primary px-6 py-4 text-white shadow-xl">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Adresse</p>
+                        <p className="mt-1 font-semibold">{club.stadeAdresse}</p>
+                    </div>
+                </div>
             </div>
-
-            {/* Bouton */}
-            <div className="mt-8">
-              <Link
-                href="/complexe"
-                className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-secondary hover:text-text"
-              >
-                Découvrir le complexe →
-              </Link>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl">
-              <Image
-                src={complexe}
-                alt="Complexe sportif de l'AS Mar Vivo"
-                className="h-[450px] w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-
-            {/* Petit élément décoratif */}
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

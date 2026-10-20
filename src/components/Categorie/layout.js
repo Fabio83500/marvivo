@@ -1,139 +1,58 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import sept from "@/images/sept.jpg";
-import treize from "@/images/treize.jpg";
-import quinze from "@/images/quinze.png";
+import { categories } from "@/data/club.js";
+import SectionHeading from "@/components/SectionHeading/layout.js";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-
-const categories = [
-    {
-        title: "FOOT À 5",
-        ages: "U5 À U9",
-        image: sept,
-        description:
-            "Découvrir le football, apprendre les bases et surtout prendre plaisir à jouer ensemble.",
-        link: "/categories/foot-a-5",
-    },
-    {
-        title: "FOOT À 8",
-        ages: "U10 À U13",
-        image: treize,
-        description:
-            "Progresser techniquement, développer le collectif et découvrir la compétition.",
-        link: "/categories/foot-a-8",
-    },
-    {
-        title: "FOOT À 11",
-        ages: "U14 À SENIORS",
-        image: quinze,
-        description:
-            "Se dépasser, jouer collectif et relever les défis de la compétition.",
-        link: "/categories/foot-a-11",
-    },
-];
-
-function CategoryCard({ category }) {
+export default function Categorie() {
     return (
-        <div className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-
-            {/* Image */}
-            <div className="overflow-hidden">
-                <Image
-                    src={category.image}
-                    alt={category.title}
-                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-72"
-                />
-            </div>
-
-            {/* Contenu */}
-            <div className="p-6 md:p-7">
-
-                <h3 className="text-center text-2xl font-bold text-primary">
-                    {category.title}
-                </h3>
-
-                {/* Âges */}
-                <div className="mt-2 flex justify-center">
-                    <span className="rounded-full bg-secondary px-4 py-1 text-sm font-semibold text-text">
-                        {category.ages}
-                    </span>
+        <section id="equipes" className="section relative scroll-mt-20 overflow-hidden bg-primary-dark text-white">
+            <div className="absolute inset-0 stripes" aria-hidden="true" />
+            <div className="container-custom relative">
+                <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                    <SectionHeading
+                        clair
+                        surtitre="Nos équipes"
+                        titre="Une place pour chaque âge"
+                        texte="Du premier ballon aux compétitions seniors, trois pratiques pour grandir avec le club."
+                    />
+                    <a href="https://epreuves.fff.fr/competition/club/533107-av-s-mar-vivo/club" target="_blank" rel="noopener noreferrer" className="btn-ghost shrink-0">
+                        Résultats FFF ↗
+                    </a>
                 </div>
 
-                {/* Description */}
-                <p className="mt-5 min-h-[72px] text-center text-sm leading-6 text-text/75">
-                    {category.description}
-                </p>
-
-                {/* Bouton */}
-                <div className="mt-6 flex justify-center">
-                    <Link
-                        href={category.link}
-                        className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-secondary hover:text-text"
-                    >
-                        En savoir plus →
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-export default function Services() {
-    return (
-        <section id="categories" className="bg-[#F7F9FC] ">
-            <div className="mx-auto mt-16 max-w-7xl px-6">
-
-                {/* Titre */}
-                <div className="text-center pt-8">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
-                        Nos équipes
-                    </span>
-
-                    <h2 className="mt-2 text-3xl font-bold text-primary md:text-4xl">
-                        Nos catégories
-                    </h2>
-
-                    <p className="mx-auto mt-4 max-w-2xl text-text/70">
-                        Du premier ballon aux compétitions seniors, découvrez les différentes
-                        catégories de l&apos;AS Mar Vivo.
-                    </p>
-                </div>
-
-                {/* ================= DESKTOP ================= */}
-                <div className="mt-10 hidden gap-10 md:grid md:grid-cols-3 md:pb-20">
-                    {categories.map((category) => (
-                        <CategoryCard
-                            key={category.title}
-                            category={category}
-                        />
+                <ul className="-mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
+                    {categories.map((c) => (
+                        <li key={c.slug} className="w-[82%] shrink-0 snap-center md:w-auto">
+                            <Link
+                                href={`/categories/${c.slug}`}
+                                className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-3xl p-7 ring-1 ring-white/10"
+                            >
+                                <Image
+                                    src={c.photo}
+                                    alt=""
+                                    fill
+                                    sizes="(min-width: 768px) 33vw, 82vw"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/60 to-transparent transition-opacity duration-500 group-hover:opacity-90" aria-hidden="true" />
+                                <div className="relative">
+                                    <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-dark">
+                                        {c.ages}
+                                    </span>
+                                    <h3 className="mt-4 text-5xl font-extrabold uppercase italic">{c.titre}</h3>
+                                    <p className="mt-3 text-white/80">{c.accroche}</p>
+                                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-secondary">
+                                        Horaires et éducateurs
+                                        <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                                    </span>
+                                </div>
+                            </Link>
+                        </li>
                     ))}
-                </div>
-
-                {/* ================= MOBILE ================= */}
-                <div className="mt-10 pb-14 md:hidden">
-                    <Swiper
-                        modules={[Pagination]}
-                        pagination={{ clickable: true }}
-                        spaceBetween={16}
-                        slidesPerView={1}
-                        className="!pb-10"
-                    >
-                        {categories.map((category) => (
-                            <SwiperSlide key={category.title}>
-                                <CategoryCard category={category} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
+                </ul>
             </div>
-
         </section>
     );
 }
