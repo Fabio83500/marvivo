@@ -43,8 +43,8 @@ export default function Complexe() {
                 <div className="relative order-1 lg:order-2">
                     <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
                         <Image
-                            src={photos.quinze}
-                            alt={`Une équipe de l'AS Mar Vivo sur le terrain du ${club.stade}`}
+                            src={photos.complexeTerrain}
+                            alt={`Le terrain synthétique et les vestiaires du ${club.stade}`}
                             fill
                             sizes="(min-width: 1024px) 50vw, 100vw"
                             className="object-cover"

@@ -17,14 +17,14 @@ src/
   pages/              # Routing (Pages Router)
     _app.js           # Wrapper global, globals.css + polices Barlow (next/font)
     index.js, le-club.js, inscriptions.js, complexe.js, contact.js
-    mentions-legales.js, politique-de-confidentialite.js
+    mentions-legales.js, politique-de-confidentialite.js, 404.js
     categories/foot-a-5.js, foot-a-8.js, foot-a-11.js  # 3 lignes chacune, modèle CategoryPage
-    api/contact.js    # POST du formulaire (Nodemailer, variables SMTP_* dans .env.local, voir .env.example)
+    api/contact.js    # POST du formulaire (Nodemailer → SMTP Resend du compte MF Agency, variables SMTP_* dans .env.local et chez l'hébergeur, voir .env.example)
   data/
     club.js           # Coordonnées, contacts, partenaires, navigation, saison en cours
     categories.js     # Contenu des pages Foot à 5 / 8 / 11 (équipes, horaires, éducateurs)
   components/<Nom>/layout.js  # Page (gabarit Head+Header+main+Footer), PageHero, SectionHeading, CategoryPage, ContactForm…
-  images/             # logomarvivo.svg, label-fff.png, photos/ (≤2000 px), partenaires/
+  images/             # logomarvivo.svg, label-fff.png, photos/ (≤2000 px), partenaires/, comite/ (portraits du bureau)
   styles/globals.css  # Thème Tailwind v4 (@theme) + utilitaires (@utility btn-gold, eyebrow, title-lg…)
 ```
 

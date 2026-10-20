@@ -34,16 +34,26 @@ export const pagesCategories = {
     },
     equipes: [
       {
-        nom: "U6 · U7",
-        sousTitre: nesEn(7, 6),
+        nom: "U6",
+        sousTitre: nesEn(6),
         photo: photos.sept,
         description:
-          "Les plus jeunes découvrent le football et développent leurs premières qualités motrices et techniques.",
-        responsable: { nom: "Jérôme Jeanney", telephone: "06 65 37 98 00" },
-        encadrants: ["Adnane Ibounou", "Jérémie Pentagrossa", "Serge"],
+          "Les plus jeunes découvrent le ballon et développent leurs premières qualités motrices à travers le jeu.",
+        responsable: { nom: "Thomas Genisio", telephone: "06 08 28 82 18" },
+        encadrants: ["Laurent", "Wissem", "Natanael"],
+        entrainements: [{ jour: "Mercredi", horaire: "13h45 – 15h30" }],
+      },
+      {
+        nom: "U7",
+        sousTitre: nesEn(7),
+        photo: photos.six,
+        description:
+          "Les enfants prennent leurs repères avec le ballon et découvrent leurs premiers matchs en plateaux.",
+        responsable: { nom: "Cyril E.", telephone: "06 58 14 41 68" },
+        encadrants: ["Lenny", "Sully", "Mickaël", "Jordan"],
         entrainements: [
           { jour: "Mercredi", horaire: "13h45 – 15h30" },
-          { jour: "Vendredi", horaire: "17h30 – 19h00", note: "U7 uniquement" },
+          { jour: "Vendredi", horaire: "17h30 – 19h00" },
         ],
       },
       {
@@ -52,7 +62,8 @@ export const pagesCategories = {
         photo: photos.neuf,
         description:
           "Les joueurs poursuivent leur progression technique et commencent à développer le jeu collectif.",
-        responsable: { nom: "Jérôme Jeanney", telephone: "06 65 37 98 00" },
+        responsable: { nom: "Jérôme J.", telephone: "06 65 37 98 00" },
+        encadrants: ["Marco", "Serge", "Adnane", "Jérémie", "Thomas M.", "Gautier"],
         entrainements: [
           { jour: "Mercredi", horaire: "13h45 – 15h30" },
           { jour: "Vendredi", horaire: "17h30 – 19h00" },
@@ -64,7 +75,8 @@ export const pagesCategories = {
         photo: photos.neuf,
         description:
           "Une nouvelle étape avec davantage de travail technique et collectif, avant le passage au foot à 8.",
-        responsable: { nom: "Cédric Derby", telephone: "06 87 27 03 00" },
+        responsable: { nom: "Laurent E.", telephone: "06 95 48 28 75" },
+        encadrants: ["Simo", "Mickaël"],
         entrainements: [
           { jour: "Mercredi", horaire: "17h00 – 18h45" },
           { jour: "Vendredi", horaire: "17h30 – 19h00" },
@@ -117,6 +129,7 @@ export const pagesCategories = {
         nom: "U10",
         sousTitre: nesEn(10),
         responsable: { nom: "Robert C.", telephone: "06 99 89 70 69" },
+        encadrants: ["Bryan", "Jérémy"],
         entrainements: [
           { jour: "Mardi", horaire: "17h30 – 19h00" },
           { jour: "Jeudi", horaire: "17h30 – 19h00" },
@@ -126,6 +139,7 @@ export const pagesCategories = {
         nom: "U11",
         sousTitre: nesEn(11),
         responsable: { nom: "Florent G.", telephone: "06 56 85 96 27" },
+        encadrants: ["Florian", "Farid", "Allan"],
         entrainements: [
           { jour: "Mardi", horaire: "17h30 – 19h00" },
           { jour: "Vendredi", horaire: "17h30 – 19h00" },
@@ -135,6 +149,7 @@ export const pagesCategories = {
         nom: "U12",
         sousTitre: nesEn(12),
         responsable: { nom: "Vincent E.", telephone: "06 79 80 42 44" },
+        encadrants: ["Yannick I.", "Sandro", "Ali", "Jean-Paul", "Cyril"],
         entrainements: [
           { jour: "Mercredi", horaire: "15h30 – 17h00" },
           { jour: "Vendredi", horaire: "17h30 – 19h00" },
@@ -143,7 +158,8 @@ export const pagesCategories = {
       {
         nom: "U13",
         sousTitre: nesEn(13),
-        responsable: { nom: "Guillaume B.", telephone: "06 95 16 26 37" },
+        responsable: { nom: "Guillaume B.", telephone: "06 95 16 28 37" },
+        encadrants: ["Gilbert", "Rémi"],
         entrainements: [
           { jour: "Lundi", horaire: "17h30 – 19h00" },
           { jour: "Jeudi", horaire: "17h30 – 19h00" },
@@ -199,6 +215,7 @@ export const pagesCategories = {
         description:
           "Développer les qualités techniques et tactiques tout en renforçant l'esprit collectif.",
         responsable: { nom: "David C.", telephone: "06 72 75 22 29" },
+        encadrants: ["Alexis C.", "Yannick G."],
         entrainements: [
           { jour: "Mercredi", horaire: "19h00 – 20h30" },
           { jour: "Vendredi", horaire: "19h00 – 20h30" },
@@ -210,6 +227,7 @@ export const pagesCategories = {
         description:
           "Une étape importante dans la formation du joueur, avec davantage d'exigence et de compétition.",
         responsable: { nom: "Mohammed M.", telephone: "06 95 05 15 26" },
+        encadrants: ["Florian", "Jean-Yves"],
         entrainements: [
           { jour: "Lundi", horaire: "19h00 – 20h30" },
           { jour: "Mercredi", horaire: "19h00 – 20h30" },
@@ -222,7 +240,8 @@ export const pagesCategories = {
         sousTitre: "Équipe première",
         description:
           "L'équipe première évolue dans un cadre compétitif avec l'ambition de représenter fièrement Mar Vivo.",
-        responsable: { nom: "Jérôme M.", telephone: "06 95 55 25 57" },
+        responsable: { nom: "Jérôme M.", telephone: "06 59 55 25 57" },
+        encadrants: ["Olivier"],
         entrainements: [
           { jour: "Mardi", horaire: "19h30 – 21h30" },
           { jour: "Jeudi", horaire: "19h30 – 21h30" },
@@ -234,7 +253,8 @@ export const pagesCategories = {
         sousTitre: "Seniors",
         description:
           "Poursuivre la pratique du football à 11 dans un esprit collectif et compétitif.",
-        responsable: { nom: "Jérôme M.", telephone: "06 95 55 25 57" },
+        responsable: { nom: "Jérôme M.", telephone: "06 59 55 25 57" },
+        encadrants: ["Olivier"],
         entrainements: [
           { jour: "Mardi", horaire: "20h30 – 22h15" },
           { jour: "Jeudi", horaire: "20h30 – 22h15" },

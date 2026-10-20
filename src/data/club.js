@@ -10,6 +10,8 @@ import photoDouzeB from "@/images/photos/douze-b.jpg";
 import photoTreize from "@/images/photos/treize.jpg";
 import photoQuatorze from "@/images/photos/quatorze.jpg";
 import photoQuinze from "@/images/photos/quinze.jpg";
+import photoComplexe from "@/images/photos/complexe.jpg";
+import photoComplexeTerrain from "@/images/photos/complexe-terrain.jpg";
 
 import mfAgency from "@/images/partenaires/mf-agency.png";
 import garden from "@/images/partenaires/garden.png";
@@ -22,6 +24,12 @@ import intersport from "@/images/partenaires/intersport.png";
 import laPiazza from "@/images/partenaires/la-piazza.png";
 import mcdonalds from "@/images/partenaires/mcdonalds.png";
 
+import vincentEutrope from "@/images/comite/vincent-eutrope.jpg";
+import yvesEutrope from "@/images/comite/yves-eutrope.jpg";
+import sabrinaMenouche from "@/images/comite/sabrina-menouche.jpg";
+import mohammedMellouki from "@/images/comite/mohammed-mellouki.jpg";
+import jeromeJeanney from "@/images/comite/jerome-jeanney.jpg";
+
 export const photos = {
   hero: photoHero,
   six: photoSix,
@@ -32,6 +40,9 @@ export const photos = {
   treize: photoTreize,
   quatorze: photoQuatorze,
   quinze: photoQuinze,
+  complexe: photoComplexe,
+  // Même photo recadrée sur le terrain, pour les formats plus hauts (4:3)
+  complexeTerrain: photoComplexeTerrain,
 };
 
 // Saison sportive en cours : elle bascule au 1er juillet.
@@ -112,6 +123,14 @@ export const categories = [
   },
 ];
 
+export const comite = [
+  { nom: "Vincent Eutrope", fonction: "Président", photo: vincentEutrope },
+  { nom: "Mohammed Mellouki", fonction: "Secrétaire", photo: mohammedMellouki },
+  { nom: "Yves Eutrope", fonction: "Trésorier", photo: yvesEutrope },
+  { nom: "Sabrina Menouche", fonction: "Secrétaire adjointe", photo: sabrinaMenouche },
+  { nom: "Jérôme Jeanney", fonction: "Trésorier adjoint", photo: jeromeJeanney },
+];
+
 export const directionSportive = [
   { nom: "Mohammed Mellouki", fonction: "Directeur sportif", telephone: "06 95 05 15 26" },
   { nom: "Jérôme Jeanney", fonction: "Cellule de direction sportive", telephone: "06 65 37 98 00" },
@@ -127,17 +146,17 @@ export const responsables = [
 ];
 
 export const educateurs = [
-  { categorie: "U6", nom: "Jérôme Jeanney", telephone: "06 65 37 98 00" },
+  { categorie: "U6", nom: "Thomas Genisio", telephone: "06 08 28 82 18" },
   { categorie: "U7", nom: "Cyril E.", telephone: "06 58 14 41 68" },
   { categorie: "U8", nom: "Jérôme J.", telephone: "06 65 37 98 00" },
-  { categorie: "U9", nom: "Laurent E.", telephone: "06 95 48 25 78" },
+  { categorie: "U9", nom: "Laurent E.", telephone: "06 95 48 28 75" },
   { categorie: "U10", nom: "Robert C.", telephone: "06 99 89 70 69" },
   { categorie: "U11", nom: "Florent G.", telephone: "06 56 85 96 27" },
   { categorie: "U12", nom: "Vincent E.", telephone: "06 79 80 42 44" },
-  { categorie: "U13", nom: "Guillaume B.", telephone: "06 95 16 26 37" },
+  { categorie: "U13", nom: "Guillaume B.", telephone: "06 95 16 28 37" },
   { categorie: "U15", nom: "David C.", telephone: "06 72 75 22 29" },
   { categorie: "U16 - U17", nom: "Mohammed M.", telephone: "06 95 05 15 26" },
-  { categorie: "Seniors", nom: "Jérôme M.", telephone: "06 95 55 25 57" },
+  { categorie: "Seniors", nom: "Jérôme M.", telephone: "06 59 55 25 57" },
   { categorie: "Loisirs", nom: "Vincent E.", telephone: "06 79 80 42 44" },
   { categorie: "Vétérans", nom: "Yves E.", telephone: "07 83 11 59 72" },
 ];

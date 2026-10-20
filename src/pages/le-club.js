@@ -8,7 +8,7 @@ import Chiffres from "@/components/Chiffres/layout.js";
 import Partenaires from "@/components/Caroussel/layout.js";
 import labelFFF from "@/images/label-fff.png";
 import logomarvivo from "@/images/logomarvivo.svg";
-import { club, photos, valeurs, directionSportive, responsables } from "@/data/club.js";
+import { club, photos, valeurs, comite, directionSportive, responsables } from "@/data/club.js";
 
 const histoire = [
   {
@@ -132,7 +132,34 @@ export default function LeClub() {
         </div>
       </section>
 
-      <section className="section bg-white">
+      <section id="comite" className="section scroll-mt-20 bg-white">
+        <div className="container-custom">
+          <SectionHeading
+            centre
+            surtitre="Les dirigeants"
+            titre="Comité directeur"
+            texte="« Seul on va plus vite, ensemble on va plus loin. » Les membres du bureau, tous bénévoles, font vivre le club au quotidien."
+          />
+          <ul className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 lg:grid-cols-5">
+            {comite.map((membre, i) => (
+              <li key={membre.nom} className={`flex flex-col items-center text-center ${i === 0 ? "col-span-2 md:col-span-4 lg:col-span-1" : ""}`}>
+                <Image
+                  src={membre.photo}
+                  alt={`${membre.nom}, ${membre.fonction.toLowerCase()} de l'AS Mar Vivo`}
+                  sizes="160px"
+                  className="h-32 w-32 rounded-full object-cover ring-4 ring-secondary ring-offset-4 ring-offset-white md:h-36 md:w-36"
+                />
+                <p className="mt-6 inline-block rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                  {membre.fonction}
+                </p>
+                <p className="mt-3 font-display text-2xl font-bold uppercase italic leading-tight text-primary">{membre.nom}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container-custom">
           <SectionHeading
             surtitre="L'encadrement"

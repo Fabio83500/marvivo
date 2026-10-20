@@ -35,7 +35,7 @@ export default function Complexe() {
         surtitre="Notre complexe"
         titre={club.stade}
         texte="Le terrain de l'AS Mar Vivo, au cœur de La Seyne-sur-Mer : là où nos équipes s'entraînent, jouent et se retrouvent."
-        image={photos.quatorze}
+        image={photos.complexe}
       >
         <a href={club.mapsLien} target="_blank" rel="noopener noreferrer" className="btn-gold">
           Itinéraire ↗

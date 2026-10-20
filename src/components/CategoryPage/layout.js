@@ -141,7 +141,8 @@ export default function CategoryPage({ slug, page }) {
                         titre="Horaires et éducateurs"
                         texte="Tous les entraînements ont lieu au Stade Squillaci. Pour une séance d'essai, contactez directement l'éducateur de la catégorie."
                     />
-                    <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {/* 4 équipes : grille 2×2 plutôt qu'une carte seule sur la dernière ligne */}
+                    <div className={`mt-12 grid gap-6 md:grid-cols-2 ${page.equipes.length === 4 ? "" : "xl:grid-cols-3"}`}>
                         {page.equipes.map((equipe) => (
                             <CarteEquipe key={equipe.nom} equipe={equipe} />
                         ))}

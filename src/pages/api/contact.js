@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ errors, error: "Merci de corriger les champs indiqués." });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, CONTACT_EMAIL_TO } = process.env;
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM, CONTACT_EMAIL_TO } = process.env;
 
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD || !CONTACT_EMAIL_TO) {
     console.error(
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
     ];
 
     await transporter.sendMail({
-      from: `"Site AS Mar Vivo" <${SMTP_USER}>`,
+      from: `"Site AS Mar Vivo" <${SMTP_FROM || SMTP_USER}>`,
       to: CONTACT_EMAIL_TO,
       replyTo: `"${nom.replace(/"/g, "")}" <${email}>`,
       subject: `[Site web] ${sujet} - ${nom}`,
