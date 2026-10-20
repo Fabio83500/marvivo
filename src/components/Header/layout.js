@@ -33,11 +33,20 @@ export default function Header() {
         return () => router.events.off("routeChangeStart", close);
     }, [router.events]);
 
-    // Bloque le scroll de la page quand le menu mobile est ouvert
+    // Menu ouvert : bloque le scroll de la page, ferme avec Échap ou en passant en largeur bureau
     useEffect(() => {
-        document.body.style.overflow = menuOpen ? "hidden" : "";
+        if (!menuOpen) return;
+        const close = () => setMenuOpen(false);
+        const onKeyDown = (e) => e.key === "Escape" && close();
+        const bureau = window.matchMedia("(min-width: 1024px)");
+
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", onKeyDown);
+        bureau.addEventListener("change", close);
         return () => {
             document.body.style.overflow = "";
+            window.removeEventListener("keydown", onKeyDown);
+            bureau.removeEventListener("change", close);
         };
     }, [menuOpen]);
 
@@ -49,8 +58,16 @@ export default function Header() {
 
     const solid = scrolled || menuOpen;
     const liens = navigation.filter((item) => item.href !== "/contact");
+    const fermer = () => setMenuOpen(false);
+
+    // Entrée en cascade des liens du menu mobile
+    const apparition = (i) => ({
+        className: `transition duration-500 ease-out motion-reduce:transition-none ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`,
+        style: { transitionDelay: menuOpen ? `${80 + i * 50}ms` : "0ms" },
+    });
 
     return (
+        <>
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
                 solid ? "bg-primary-dark/95 shadow-lg shadow-black/10 backdrop-blur-md" : "bg-transparent"
@@ -144,50 +161,60 @@ export default function Header() {
                     </button>
                 </div>
             </div>
+        </header>
 
-            {/* Menu mobile */}
-            <div
-                id="menu-mobile"
-                className={`fixed inset-x-0 top-20 bottom-0 overflow-y-auto bg-primary-dark stripes transition-all duration-300 lg:hidden ${
-                    menuOpen ? "visible opacity-100" : "invisible opacity-0"
-                }`}
-            >
-                <nav aria-label="Navigation mobile" className="container-custom flex flex-col gap-1 py-8">
-                    {navigation.map((item) => (
-                        <div key={item.label}>
-                            {item.enfants ? (
-                                <>
-                                    <p className="px-2 pt-4 pb-2 text-xs font-bold uppercase tracking-[0.25em] text-secondary">
-                                        {item.label}
-                                    </p>
-                                    {item.enfants.map((enfant) => (
-                                        <Link
-                                            key={enfant.href}
-                                            href={enfant.href}
-                                            className="flex items-center justify-between border-b border-white/10 px-2 py-4 font-display text-2xl font-bold uppercase italic text-white"
-                                        >
-                                            {enfant.label}
-                                            <span className="text-sm font-semibold not-italic text-white/60">{enfant.detail}</span>
-                                        </Link>
-                                    ))}
-                                </>
-                            ) : (
-                                <Link
-                                    href={item.href}
-                                    className={`block border-b border-white/10 px-2 py-4 font-display text-3xl font-extrabold uppercase italic ${
-                                        isActive(item) ? "text-secondary" : "text-white"
-                                    }`}
-                                >
+        {/* Menu mobile : volontairement hors du <header>, dont le backdrop-blur ferait
+            de lui le repère des éléments `fixed` (le menu aurait alors une hauteur nulle). */}
+        <div
+            id="menu-mobile"
+            className={`fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-primary-dark stripes transition-all duration-300 motion-reduce:transition-none lg:hidden ${
+                menuOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
+            }`}
+        >
+            <nav aria-label="Navigation mobile" className="container-custom flex flex-col gap-1 py-8">
+                {navigation.map((item, i) => (
+                    <div key={item.label} {...apparition(i)}>
+                        {item.enfants ? (
+                            <>
+                                <p className="px-2 pt-4 pb-2 text-xs font-bold uppercase tracking-[0.25em] text-secondary">
                                     {item.label}
-                                </Link>
-                            )}
-                        </div>
-                    ))}
-                    <Link href="/inscriptions" className="btn-gold mt-8">
+                                </p>
+                                {item.enfants.map((enfant) => (
+                                    <Link
+                                        key={enfant.href}
+                                        href={enfant.href}
+                                        onClick={fermer}
+                                        aria-current={router.pathname === enfant.href ? "page" : undefined}
+                                        className={`flex items-center justify-between border-b border-white/10 px-2 py-4 font-display text-2xl font-bold uppercase italic ${
+                                            router.pathname === enfant.href ? "text-secondary" : "text-white"
+                                        }`}
+                                    >
+                                        {enfant.label}
+                                        <span className="text-sm font-semibold not-italic text-white/60">{enfant.detail}</span>
+                                    </Link>
+                                ))}
+                            </>
+                        ) : (
+                            <Link
+                                href={item.href}
+                                onClick={fermer}
+                                aria-current={isActive(item) ? "page" : undefined}
+                                className={`block border-b border-white/10 px-2 py-4 font-display text-3xl font-extrabold uppercase italic ${
+                                    isActive(item) ? "text-secondary" : "text-white"
+                                }`}
+                            >
+                                {item.label}
+                            </Link>
+                        )}
+                    </div>
+                ))}
+                <div {...apparition(navigation.length)}>
+                    <Link href="/inscriptions" onClick={fermer} className="btn-gold mt-8 w-full">
                         Rejoindre le club
                     </Link>
-                </nav>
-            </div>
-        </header>
+                </div>
+            </nav>
+        </div>
+        </>
     );
 }
