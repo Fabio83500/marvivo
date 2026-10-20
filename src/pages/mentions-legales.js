@@ -23,7 +23,7 @@ export default function MentionsLegales() {
                 <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/5" />
                 <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-secondary/10" />
 
-                <div className="relative mx-auto max-w-5xl">
+                <div className="relative mx-auto max-w-5xl motion-safe:animate-fade-up">
                     <span className="text-sm font-bold uppercase tracking-[0.25em] text-secondary">
                         Informations légales
                     </span>
@@ -45,7 +45,7 @@ export default function MentionsLegales() {
 
                     {/* Éditeur */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <span className="text-sm font-bold uppercase tracking-widest text-secondary">
                             01
                         </span>
@@ -66,7 +66,7 @@ export default function MentionsLegales() {
                             </p>
 
                             <p>
-                                Siège social : <strong>Av. Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
+                                Siège social : <strong>Avenue Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
                             </p>
 
                             <p>
@@ -87,7 +87,7 @@ export default function MentionsLegales() {
 
                     {/* Hébergement */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <span className="text-sm font-bold uppercase tracking-widest text-secondary">
                             02
                         </span>
@@ -140,7 +140,7 @@ export default function MentionsLegales() {
 
                     {/* Développement */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <span className="text-sm font-bold uppercase tracking-widest text-secondary">
                             03
                         </span>
@@ -177,7 +177,7 @@ export default function MentionsLegales() {
 
                     {/* Propriété intellectuelle */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <span className="text-sm font-bold uppercase tracking-widest text-secondary">
                             04
                         </span>
@@ -208,7 +208,7 @@ export default function MentionsLegales() {
 
                     {/* Responsabilité */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <span className="text-sm font-bold uppercase tracking-widest text-secondary">
                             05
                         </span>

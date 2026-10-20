@@ -37,6 +37,7 @@ Alias d'import : `@/*` → `src/*`.
 - Images importées statiquement depuis `src/images` et passées à `next/image`. Pas de `<img>` brut. Recompresser toute nouvelle photo (≤2000 px de large).
 - Navigation interne via `next/link`.
 - Couleurs uniquement via le thème : `primary`, `primary-dark`, `navy`, `secondary` (doré), `secondary-light`, `text`, `background`, `light`. Pas d'hexadécimal ad hoc.
+- Animations : apparition au défilement via l'attribut `data-reveal` (`left`, `right`, `zoom`, défaut vers le haut) + `style={{ "--reveal-delay": "100ms" }}` pour la cascade ; observateur unique dans `_app.js`, styles dans `globals.css`. Entrées au chargement : `motion-safe:animate-fade-up motion-safe:anim-delay-300`. Ne pas mettre `data-reveal` sur un élément qui change selon un état React (ex. formulaire) ni sur un élément avec `transform` (skew).
 - Titres en `font-display` (Barlow Condensed, majuscules italiques) via les utilitaires `title-xl` / `title-lg`.
 - Contenu entièrement en français ; échapper les apostrophes dans le JSX (`&apos;`).
 
@@ -50,6 +51,7 @@ Alias d'import : `@/*` → `src/*`.
 
 - Nom : Association Sportive Mar Vivo
 - Ville : La Seyne-sur-Mer (83500)
-- Stade / terrain d'entraînement : Stade Squillaci, Rue du Lot de l'Evescat
-- Siège social (mentions légales) : Av. Henri Guillaume, 83500 La Seyne-sur-Mer
+- Stade / terrain d'entraînement : Stade Squillaci, Avenue Henri Guillaume, 83500 La Seyne-sur-Mer
+- Téléphone de contact du club : 06 79 80 42 44
+- Siège social (mentions légales) : Avenue Henri Guillaume, 83500 La Seyne-sur-Mer
 - Email : asmarvivo@orange.fr

@@ -22,8 +22,8 @@ export default function Complexe() {
                         texte="Plus qu'un terrain, un lieu de vie. C'est ici que nos équipes s'entraînent chaque semaine, reçoivent leurs adversaires et que joueurs, éducateurs et familles se retrouvent."
                     />
                     <ul className="mt-8 space-y-4">
-                        {atouts.map((a) => (
-                            <li key={a.titre} className="flex gap-4">
+                        {atouts.map((a, i) => (
+                            <li key={a.titre} data-reveal style={{ "--reveal-delay": `${i * 100}ms` }} className="flex gap-4">
                                 <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-secondary font-bold text-primary-dark" aria-hidden="true">
                                     ✓
                                 </span>
@@ -40,7 +40,7 @@ export default function Complexe() {
                     </Link>
                 </div>
 
-                <div className="relative order-1 lg:order-2">
+                <div data-reveal="right" className="relative order-1 lg:order-2">
                     <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
                         <Image
                             src={photos.complexeTerrain}

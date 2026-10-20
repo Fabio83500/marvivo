@@ -31,7 +31,7 @@ export default function Rejoindre() {
 
             <div className="container-custom section relative">
                 <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-                    <div>
+                    <div data-reveal="left">
                         <span className="eyebrow">Saison en cours</span>
                         <h2 className="title-lg mt-4">
                             Rejoignez
@@ -53,7 +53,7 @@ export default function Rejoindre() {
 
                     <ol className="grid gap-4 sm:grid-cols-2">
                         {etapes.map((e, i) => (
-                            <li key={e.titre} className="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 backdrop-blur-sm">
+                            <li key={e.titre} data-reveal style={{ "--reveal-delay": `${i * 100}ms` }} className="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 backdrop-blur-sm">
                                 <span className="font-display text-5xl font-extrabold italic text-secondary">{i + 1}</span>
                                 <h3 className="mt-2 text-2xl font-bold uppercase italic">{e.titre}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-white/75">{e.texte}</p>

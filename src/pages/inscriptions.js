@@ -83,7 +83,7 @@ export default function Inscriptions() {
           <SectionHeading surtitre="Étape par étape" titre="Comment s'inscrire" />
           <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {etapes.map((e, i) => (
-              <li key={e.titre} className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10">
+              <li key={e.titre} data-reveal style={{ "--reveal-delay": `${i * 110}ms` }} className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10">
                 <span className="absolute -top-4 -right-2 font-display text-[9rem] leading-none font-extrabold italic text-primary/5" aria-hidden="true">
                   {i + 1}
                 </span>
@@ -106,9 +106,10 @@ export default function Inscriptions() {
             texte="La catégorie dépend de l'année de naissance. Cliquez sur une pratique pour voir les horaires et les éducateurs."
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {tranches.map((t) => (
+            {tranches.map((t, i) => (
               <Link
                 key={t.slug}
+                data-reveal style={{ "--reveal-delay": `${i * 120}ms` }}
                 href={`/categories/${t.slug}`}
                 className="group overflow-hidden rounded-3xl bg-background ring-1 ring-primary/10 transition hover:-translate-y-1 hover:shadow-xl"
               >
@@ -147,8 +148,8 @@ export default function Inscriptions() {
               texte="Préparez ces éléments pour aller plus vite. Le club vous accompagne pour chaque étape."
             />
             <ul className="mt-10 space-y-4">
-              {documents.map((d) => (
-                <li key={d.titre} className="flex gap-4 rounded-2xl bg-white p-5 ring-1 ring-primary/10">
+              {documents.map((d, i) => (
+                <li key={d.titre} data-reveal style={{ "--reveal-delay": `${i * 80}ms` }} className="flex gap-4 rounded-2xl bg-white p-5 ring-1 ring-primary/10">
                   <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-secondary" aria-hidden="true">
                     ✓
                   </span>
@@ -164,8 +165,8 @@ export default function Inscriptions() {
           <div>
             <SectionHeading surtitre="Questions fréquentes" titre="Bon à savoir" />
             <div className="mt-10 space-y-3">
-              {questions.map((item) => (
-                <details key={item.q} className="group rounded-2xl bg-white p-5 ring-1 ring-primary/10 open:shadow-md">
+              {questions.map((item, i) => (
+                <details key={item.q} data-reveal style={{ "--reveal-delay": `${i * 80}ms` }} className="group rounded-2xl bg-white p-5 ring-1 ring-primary/10 open:shadow-md">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-primary">
                     {item.q}
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-background text-xl transition-transform group-open:rotate-45" aria-hidden="true">

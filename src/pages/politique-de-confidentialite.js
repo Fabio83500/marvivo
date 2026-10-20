@@ -23,7 +23,7 @@ export default function PolitiqueConfidentialite() {
                 <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/5" />
                 <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-secondary/10" />
 
-                <div className="relative mx-auto max-w-5xl">
+                <div className="relative mx-auto max-w-5xl motion-safe:animate-fade-up">
                     <span className="text-sm font-bold uppercase tracking-[0.25em] text-secondary">
                         Vie privée
                     </span>
@@ -46,7 +46,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Responsable */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             1. Responsable du traitement
                         </h2>
@@ -66,10 +66,10 @@ export default function PolitiqueConfidentialite() {
                             </p>
 
                             <p>
-                                Adresse : <strong>Av. Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
+                                Adresse : <strong>Avenue Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
                             </p>
                               <p>
-                                Siège social : <strong>Av. Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
+                                Siège social : <strong>Avenue Henri Guillaume, 83500 La Seyne-sur-Mer</strong>
                             </p>
 
                          
@@ -79,7 +79,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Données collectées */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             2. Données personnelles collectées
                         </h2>
@@ -113,7 +113,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Finalités */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             3. Utilisation des données
                         </h2>
@@ -146,7 +146,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Conservation */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             4. Durée de conservation
                         </h2>
@@ -162,7 +162,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Destinataires */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             5. Destinataires des données
                         </h2>
@@ -185,7 +185,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Cookies */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             6. Cookies et traceurs
                         </h2>
@@ -209,7 +209,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Droits */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             7. Vos droits
                         </h2>
@@ -250,7 +250,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Sécurité */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             8. Sécurité
                         </h2>
@@ -266,7 +266,7 @@ export default function PolitiqueConfidentialite() {
 
                     {/* Mise à jour */}
 
-                    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
+                    <article data-reveal className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:p-10">
                         <h2 className="text-2xl font-black text-primary">
                             9. Mise à jour de la politique
                         </h2>

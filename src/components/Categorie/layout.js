@@ -23,8 +23,8 @@ export default function Categorie() {
                 </div>
 
                 <ul className="-mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
-                    {categories.map((c) => (
-                        <li key={c.slug} className="w-[82%] shrink-0 snap-center md:w-auto">
+                    {categories.map((c, i) => (
+                        <li key={c.slug} data-reveal style={{ "--reveal-delay": `${i * 120}ms` }} className="w-[82%] shrink-0 snap-center md:w-auto">
                             <Link
                                 href={`/categories/${c.slug}`}
                                 className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-3xl p-7 ring-1 ring-white/10"

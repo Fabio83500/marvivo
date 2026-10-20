@@ -6,7 +6,7 @@ export default function PageHero({ surtitre, titre, texte, image, children }) {
     return (
         <section className="relative flex min-h-[60vh] items-end overflow-hidden bg-primary-dark pt-32 pb-16 text-white md:min-h-[70vh] md:pb-24">
             {image && (
-                <Image src={image} alt="" fill preload sizes="100vw" className="object-cover" />
+                <Image src={image} alt="" fill preload sizes="100vw" className="object-cover motion-safe:animate-ken-burns" />
             )}
             <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/85 to-primary/40" aria-hidden="true" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent" aria-hidden="true" />
@@ -14,10 +14,16 @@ export default function PageHero({ surtitre, titre, texte, image, children }) {
             <div className="absolute -right-24 bottom-0 h-full w-1/3 -skew-x-12 bg-secondary/10" aria-hidden="true" />
 
             <div className="container-custom relative">
-                {surtitre && <span className="eyebrow">{surtitre}</span>}
-                <h1 className="title-xl mt-4 max-w-4xl">{titre}</h1>
-                {texte && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">{texte}</p>}
-                {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
+                {surtitre && <span className="eyebrow motion-safe:animate-fade-up">{surtitre}</span>}
+                <h1 className="title-xl mt-4 max-w-4xl motion-safe:animate-fade-up motion-safe:anim-delay-150">{titre}</h1>
+                {texte && (
+                    <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 motion-safe:animate-fade-up motion-safe:anim-delay-300 md:text-xl">
+                        {texte}
+                    </p>
+                )}
+                {children && (
+                    <div className="mt-8 flex flex-wrap gap-3 motion-safe:animate-fade-up motion-safe:anim-delay-450">{children}</div>
+                )}
             </div>
         </section>
     );

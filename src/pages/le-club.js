@@ -31,9 +31,9 @@ const histoire = [
   },
 ];
 
-function Contact({ personne }) {
+function Contact({ personne, index = 0 }) {
   return (
-    <li className="rounded-2xl bg-white p-6 ring-1 ring-primary/10">
+    <li data-reveal style={{ "--reveal-delay": `${index * 80}ms` }} className="rounded-2xl bg-white p-6 ring-1 ring-primary/10">
       <p className="text-xs font-bold uppercase tracking-wider text-secondary">{personne.fonction || personne.categorie}</p>
       <p className="mt-2 font-display text-2xl font-bold uppercase italic text-primary">{personne.nom}</p>
       {personne.telephone && (
@@ -64,7 +64,7 @@ export default function LeClub() {
 
       <section className="section">
         <div className="container-custom grid items-center gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <div className="flex justify-center">
+          <div data-reveal="zoom" className="flex justify-center">
             <Image src={logomarvivo} alt="Écusson de l'AS Mar Vivo" width={420} height={420} className="w-72 md:w-96" />
           </div>
           <div>
@@ -86,8 +86,8 @@ export default function LeClub() {
           <SectionHeading surtitre="Notre histoire" titre="Les grandes dates" />
           <ol className="relative mt-14 grid gap-8 md:grid-cols-3">
             <div className="absolute top-7 right-0 left-0 hidden h-0.5 bg-secondary/40 md:block" aria-hidden="true" />
-            {histoire.map((h) => (
-              <li key={h.annee} className="relative">
+            {histoire.map((h, i) => (
+              <li key={h.annee} data-reveal style={{ "--reveal-delay": `${i * 150}ms` }} className="relative">
                 <span className="relative inline-flex h-14 items-center rounded-full bg-primary px-6 font-display text-2xl font-extrabold italic text-secondary">
                   {h.annee}
                 </span>
@@ -105,7 +105,7 @@ export default function LeClub() {
           <SectionHeading clair centre surtitre="Ce qui nous rassemble" titre="Nos valeurs" />
           <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {valeurs.map((v, i) => (
-              <li key={v.titre} className="rounded-3xl bg-white/5 p-8 ring-1 ring-white/10">
+              <li key={v.titre} data-reveal style={{ "--reveal-delay": `${i * 100}ms` }} className="rounded-3xl bg-white/5 p-8 ring-1 ring-white/10">
                 <span className="font-display text-6xl font-extrabold italic text-secondary">0{i + 1}</span>
                 <h3 className="mt-4 text-3xl font-extrabold uppercase italic">{v.titre}</h3>
                 <p className="mt-3 leading-relaxed text-white/70">{v.texte}</p>
@@ -117,7 +117,7 @@ export default function LeClub() {
 
       <section className="section">
         <div className="container-custom">
-          <div className="flex flex-col items-center gap-8 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10 md:flex-row md:p-12">
+          <div data-reveal className="flex flex-col items-center gap-8 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10 md:flex-row md:p-12">
             <Image src={labelFFF} alt="Label Jeunes Excellence de la Fédération Française de Football" className="h-32 w-auto shrink-0" />
             <div>
               <span className="eyebrow">Formation des jeunes</span>
@@ -142,7 +142,7 @@ export default function LeClub() {
           />
           <ul className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 lg:grid-cols-5">
             {comite.map((membre, i) => (
-              <li key={membre.nom} className={`flex flex-col items-center text-center ${i === 0 ? "col-span-2 md:col-span-4 lg:col-span-1" : ""}`}>
+              <li key={membre.nom} data-reveal="zoom" style={{ "--reveal-delay": `${i * 110}ms` }} className={`flex flex-col items-center text-center ${i === 0 ? "col-span-2 md:col-span-4 lg:col-span-1" : ""}`}>
                 <Image
                   src={membre.photo}
                   alt={`${membre.nom}, ${membre.fonction.toLowerCase()} de l'AS Mar Vivo`}
@@ -167,15 +167,15 @@ export default function LeClub() {
             texte="Une équipe de passionnés organise la vie sportive du club et accompagne les éducateurs au quotidien."
           />
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {directionSportive.map((p) => (
-              <Contact key={p.nom} personne={p} />
+            {directionSportive.map((p, i) => (
+              <Contact key={p.nom} personne={p} index={i} />
             ))}
           </ul>
 
           <h3 className="mt-16 text-3xl font-extrabold uppercase italic text-primary">Responsables de pratique</h3>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {responsables.map((p) => (
-              <Contact key={p.categorie} personne={p} />
+            {responsables.map((p, i) => (
+              <Contact key={p.categorie} personne={p} index={i} />
             ))}
           </ul>
 

@@ -51,7 +51,7 @@ export default function Complexe() {
           />
           <ul className="mt-12 grid gap-5 md:grid-cols-3">
             {installations.map((item, i) => (
-              <li key={item.titre} className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10">
+              <li key={item.titre} data-reveal style={{ "--reveal-delay": `${i * 120}ms` }} className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-primary/10">
                 <span className="font-display text-5xl font-extrabold italic text-secondary">0{i + 1}</span>
                 <h3 className="mt-3 text-3xl font-extrabold uppercase italic text-primary">{item.titre}</h3>
                 <p className="mt-3 leading-relaxed text-text/70">{item.texte}</p>
@@ -68,6 +68,8 @@ export default function Complexe() {
             {galerie.map((photo, i) => (
               <div
                 key={photo.src}
+                data-reveal="zoom"
+                style={{ "--reveal-delay": `${i * 90}ms` }}
                 className={`relative overflow-hidden rounded-2xl ${i === 0 ? "col-span-2 row-span-2" : ""}`}
               >
                 <Image
@@ -85,7 +87,7 @@ export default function Complexe() {
 
       <section className="section">
         <div className="container-custom grid gap-8 md:grid-cols-2">
-          <div className="rounded-3xl bg-primary p-8 text-white md:p-10">
+          <div data-reveal="left" className="rounded-3xl bg-primary p-8 text-white md:p-10">
             <span className="eyebrow">Venir au stade</span>
             <h2 className="mt-4 font-display text-4xl font-extrabold uppercase italic">Accès</h2>
             <p className="mt-4 leading-relaxed text-white/80">
@@ -95,7 +97,7 @@ export default function Complexe() {
               Ouvrir dans Google Maps ↗
             </a>
           </div>
-          <div className="rounded-3xl bg-white p-8 ring-1 ring-primary/10 md:p-10">
+          <div data-reveal="right" className="rounded-3xl bg-white p-8 ring-1 ring-primary/10 md:p-10">
             <span className="eyebrow">Au quotidien</span>
             <h2 className="mt-4 font-display text-4xl font-extrabold uppercase italic text-primary">Horaires</h2>
             <p className="mt-4 leading-relaxed text-text/70">

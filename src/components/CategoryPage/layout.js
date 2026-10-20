@@ -32,11 +32,11 @@ function Entrainements({ entrainements }) {
     );
 }
 
-function CarteEquipe({ equipe }) {
+function CarteEquipe({ equipe, index = 0 }) {
     const { responsable } = equipe;
 
     return (
-        <article className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-primary/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <article data-reveal style={{ "--reveal-delay": `${(index % 3) * 110}ms` }} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-primary/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             {equipe.photo ? (
                 <div className="relative aspect-[16/9]">
                     <Image src={equipe.photo} alt={`Équipe ${equipe.nom} de l'AS Mar Vivo`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
@@ -125,7 +125,7 @@ export default function CategoryPage({ slug, page }) {
                     </div>
                     <ul className="grid content-center gap-4 sm:grid-cols-2">
                         {page.intro.points.map((point, i) => (
-                            <li key={point} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-primary/10">
+                            <li key={point} data-reveal style={{ "--reveal-delay": `${i * 100}ms` }} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-primary/10">
                                 <span className="font-display text-4xl font-extrabold italic text-secondary">0{i + 1}</span>
                                 <p className="mt-2 font-semibold leading-snug text-primary">{point}</p>
                             </li>
@@ -143,8 +143,8 @@ export default function CategoryPage({ slug, page }) {
                     />
                     {/* 4 équipes : grille 2×2 plutôt qu'une carte seule sur la dernière ligne */}
                     <div className={`mt-12 grid gap-6 md:grid-cols-2 ${page.equipes.length === 4 ? "" : "xl:grid-cols-3"}`}>
-                        {page.equipes.map((equipe) => (
-                            <CarteEquipe key={equipe.nom} equipe={equipe} />
+                        {page.equipes.map((equipe, i) => (
+                            <CarteEquipe key={equipe.nom} equipe={equipe} index={i} />
                         ))}
                     </div>
                 </div>
@@ -155,8 +155,8 @@ export default function CategoryPage({ slug, page }) {
                     <div className="container-custom">
                         <SectionHeading surtitre="À savoir" titre="Informations utiles" />
                         <ul className="mt-10 grid gap-5 md:grid-cols-3">
-                            {page.ressources.map((r) => (
-                                <li key={r.href}>
+                            {page.ressources.map((r, i) => (
+                                <li key={r.href} data-reveal style={{ "--reveal-delay": `${i * 100}ms` }}>
                                     <a
                                         href={r.href}
                                         target="_blank"

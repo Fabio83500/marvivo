@@ -19,6 +19,10 @@
   --color-light: #80c0f0;         /* Bleu clair */
 
   --animate-marquee: marquee 40s linear infinite;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-pop-in: pop-in 1s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-ken-burns: ken-burns 18s ease-out both;
 
   @keyframes marquee {
     from {
@@ -28,6 +32,102 @@
     to {
       transform: translateX(-50%);
     }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(-8deg);
+    }
+  }
+
+  @keyframes float {
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  /* Léger zoom arrière des photos de bandeau */
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.12);
+    }
+  }
+}
+
+/* Décalage d'une animation d'entrée : anim-delay-150 → 150 ms */
+@utility anim-delay-* {
+  animation-delay: calc(--value(integer) * 1ms);
+}
+
+/* Apparition au défilement : ajouter data-reveal (up par défaut, left, right, zoom)
+   et éventuellement style={{ "--reveal-delay": "120ms" }}. L'attribut data-visible
+   est posé par l'observateur de _app.js. On anime `transform` (et non `translate`
+   ou `scale`) pour ne pas entrer en conflit avec les effets de survol Tailwind. */
+@layer base {
+  [data-reveal]:not([data-visible]) {
+    opacity: 0;
+  }
+
+  [data-reveal][data-visible] {
+    animation: reveal-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms) backwards;
+  }
+
+  [data-reveal="left"][data-visible] {
+    animation-name: reveal-left;
+  }
+
+  [data-reveal="right"][data-visible] {
+    animation-name: reveal-right;
+  }
+
+  [data-reveal="zoom"][data-visible] {
+    animation-name: reveal-zoom;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal]:not([data-visible]) {
+      opacity: 1;
+    }
+
+    [data-reveal][data-visible] {
+      animation: none;
+    }
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+}
+
+@keyframes reveal-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
   }
 }
 

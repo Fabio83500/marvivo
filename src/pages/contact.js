@@ -12,8 +12,8 @@ function Annuaire({ titre, personnes, cle }) {
     <div>
       <h3 className="text-3xl font-extrabold uppercase italic text-primary">{titre}</h3>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {personnes.map((p) => (
-          <li key={p[cle] + p.nom} className="flex items-center justify-between gap-3 rounded-2xl bg-white p-5 ring-1 ring-primary/10">
+        {personnes.map((p, i) => (
+          <li key={p[cle] + p.nom} data-reveal style={{ "--reveal-delay": `${(i % 4) * 80}ms` }} className="flex items-center justify-between gap-3 rounded-2xl bg-white p-5 ring-1 ring-primary/10">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-secondary">{p.fonction || p.categorie}</p>
               <p className="mt-1 font-semibold text-text">{p.nom}</p>
@@ -65,7 +65,7 @@ export default function Contact() {
               titre="Le club"
               texte="Pour toute question générale, utilisez le formulaire : votre message arrive directement dans la boîte du club."
             />
-            <dl className="mt-10 space-y-6">
+            <dl data-reveal className="mt-10 space-y-6">
               <div>
                 <dt className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Email</dt>
                 <dd className="mt-1">
@@ -95,7 +95,9 @@ export default function Contact() {
             </dl>
           </div>
 
-          <ContactForm />
+          <div data-reveal="right">
+            <ContactForm />
+          </div>
         </div>
       </section>
 

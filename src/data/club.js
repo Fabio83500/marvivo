@@ -64,14 +64,14 @@ export const club = {
   creation: 1980,
   labelFFF: "octobre 2012",
   email: "asmarvivo@orange.fr",
-  telephone: "06 95 05 15 26",
-  telephoneLien: "0695051526",
-  siege: "Av. Henri Guillaume, 83500 La Seyne-sur-Mer",
+  telephone: "06 79 80 42 44",
+  telephoneLien: "0679804244",
+  siege: "Avenue Henri Guillaume, 83500 La Seyne-sur-Mer",
   stade: "Stade Squillaci",
-  stadeAdresse: "Rue du Lot de l'Evescat, 83500 La Seyne-sur-Mer",
+  stadeAdresse: "Avenue Henri Guillaume, 83500 La Seyne-sur-Mer",
   fffClub: "https://epreuves.fff.fr/competition/club/533107-av-s-mar-vivo/club",
   mapsEmbed:
-    "https://www.google.com/maps?q=Stade+Squillaci,+Rue+du+Lot+de+l'Evescat,+83500+La+Seyne-sur-Mer&output=embed",
+    "https://www.google.com/maps?q=Stade+Squillaci,+Avenue+Henri+Guillaume,+83500+La+Seyne-sur-Mer&output=embed",
   mapsLien:
     "https://www.google.com/maps/search/?api=1&query=Stade+Squillaci+La+Seyne-sur-Mer",
 };
